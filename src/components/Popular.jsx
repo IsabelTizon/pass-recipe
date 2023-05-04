@@ -15,18 +15,22 @@ function Popular() {
 	}, []);
 
 	const getPopular = async () => {
-		const check = localStorage.getItem("popular");
+		// Storing our fetch in our localStorage for don't fetch over and over again and don't loose my maximun of request per day in spoonaculary API
+
+		const check = localStorage.getItem("popular"); // get in the item
 
 		if (check) {
-			setPopular(JSON.parse(check));
+			// If there is an item in localStorage, set it and don't do the fetching again
+
+			setPopular(JSON.parse(check)); // JSON.parse: takes the argument of the JSON source and converts it to the JSON format, because the data was in string
 		} else {
-			// 'await' expressions are only allowed within async functions to wait to process the code before pop in in the next line
 			const api = await fetch(
+				// 'await' expressions are only allowed within async functions to wait to process the code before pop in in the next line
 				`https://api.spoonacular.com/recipes/random?apiKey=${process.env.REACT_APP_SECOND_API_KEY}&number=9`
 			);
 			const data = await api.json();
 
-			localStorage.setItem("popular", JSON.stringify(data.recipes));
+			localStorage.setItem("popular", JSON.stringify(data.recipes)); // Saving the array like a string
 			// console.log(data);
 			setPopular(data.recipes);
 			console.log(data.recipes);
