@@ -26,7 +26,7 @@ function Veggie() {
 		} else {
 			const api = await fetch(
 				// 'await' expressions are only allowed within async functions to wait to process the code before pop in in the next line
-				`https://api.spoonacular.com/recipes/random?apiKey=${process.env.REACT_APP_SECOND_API_KEY}&number=9`
+				`https://api.spoonacular.com/recipes/random?apiKey=${process.env.REACT_APP_SECOND_API_KEY}&number=9&tags=vegetarian`
 			);
 			const data = await api.json();
 
@@ -46,7 +46,7 @@ function Veggie() {
 				{/*Splide options: to add the number of pictures per screem */}
 				<Splide
 					options={{
-						perPage: 4,
+						perPage: 3,
 						arrows: false,
 						pagination: false,
 						drag: "free",
@@ -81,7 +81,7 @@ const Wrapper = styled.div`
 `;
 //card style
 const Card = styled.div`
-	min-height: 25rem;
+	min-height: 15rem;
 	border-radius: 2rem;
 	overflow: hidden;
 	position: relative;
