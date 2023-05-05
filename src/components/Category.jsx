@@ -50,13 +50,13 @@ const SLink = styled(NavLink)`
 	margin-right: 2rem;
 	text-decoration: none;
 	background: linear-gradient(to right, #494949, #313131);
-	width: 6rem;
-	height: 6rem;
+	width: 4.5rem;
+	height: 4.5rem;
 	transform: scale(0.8);
 
 	h5 {
 		color: #ffffff;
-		font-size: 0.8rem;
+		font-size: 0.6rem;
 		margin-top: 5px;
 	}
 	svg {
