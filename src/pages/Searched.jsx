@@ -23,7 +23,7 @@ function Searched() {
 		<Grid>
 			{searchedRecipes.map((item) => {
 				return (
-					<Card ke={item.id}>
+					<Card key={item.id}>
 						<img src={item.image} alt="" />
 						<h4>{item.title}</h4>
 					</Card>
@@ -38,6 +38,7 @@ const Grid = styled.div`
 	grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
 	grid-gap: 3rem;
 `;
+
 const Card = styled.div`
 	img {
 		width: 100%;

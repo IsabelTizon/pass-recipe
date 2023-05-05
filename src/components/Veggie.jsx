@@ -5,6 +5,7 @@ import styled from "styled-components"; // atatached the style to my function co
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 //
 import "@splidejs/splide/dist/css/splide.min.css";
+import { Link } from "react-router-dom";
 
 function Veggie() {
 	const [veggie, setVeggie] = useState([]);
@@ -59,11 +60,13 @@ function Veggie() {
 							<SplideSlide key={recipe.id}>
 								{/*each card would be a slide*/}
 								<Card>
-									{/*return Recipe Title*/}
-									<p>{recipe.title}</p>
-									{/*return imag*/}
-									<img src={recipe.image} alt="recipe.title" />
-									<Gradient />
+									<Link to={"/recipe/" + recipe.id}>
+										{/*return Recipe Title*/}
+										<p>{recipe.title}</p>
+										{/*return imag*/}
+										<img src={recipe.image} alt="recipe.title" />
+										<Gradient />
+									</Link>
 								</Card>
 							</SplideSlide>
 						);

@@ -3,6 +3,7 @@ import styled from "styled-components"; // atatached the style to my function co
 //Splide: the carousel
 //SplideSlide: It's gonna be each individual image or card
 import { Splide, SplideSlide } from "@splidejs/react-splide";
+import { Link } from "react-router-dom";
 //
 import "@splidejs/splide/dist/css/splide.min.css";
 
@@ -59,11 +60,13 @@ function Popular() {
 							<SplideSlide key={recipe.id}>
 								{/*each card would be a slide*/}
 								<Card>
-									{/*return Recipe Title*/}
-									<p>{recipe.title}</p>
-									{/*return imag*/}
-									<img src={recipe.image} alt="recipe.title" />
-									<Gradient />
+									<Link to={"/recipe/" + recipe.id}>
+										{/*return Recipe Title*/}
+										<p>{recipe.title}</p>
+										{/*return imag*/}
+										<img src={recipe.image} alt="recipe.title" />
+										<Gradient />
+									</Link>
 								</Card>
 							</SplideSlide>
 						);
