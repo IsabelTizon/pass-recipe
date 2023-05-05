@@ -26,7 +26,7 @@ function Popular() {
 		} else {
 			const api = await fetch(
 				// 'await' expressions are only allowed within async functions to wait to process the code before pop in in the next line
-				`https://api.spoonacular.com/recipes/random?apiKey=${process.env.REACT_APP_SECOND_API_KEY}&number=9`
+				`https://api.spoonacular.com/recipes/random?apiKey=${process.env.REACT_APP_API_KEY}&number=9`
 			);
 			const data = await api.json();
 

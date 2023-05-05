@@ -1,5 +1,5 @@
-import { FaPizzaSlice, FaHamburger, FaCocktail, FaFish } from "react-icons/fa";
-import { GiNoodles, GiChopsticks, GiCakeSlice } from "react-icons/gi";
+import { FaPizzaSlice, FaHamburger, FaPepperHot } from "react-icons/fa";
+import { GiNoodles, GiSushis, GiCheeseWedge } from "react-icons/gi";
 
 import styled from "styled-components";
 import { NavLink } from "react-router-dom"; // a= NavLink: react links
@@ -7,34 +7,30 @@ import { NavLink } from "react-router-dom"; // a= NavLink: react links
 function Category() {
 	return (
 		<List>
-			<NavLink to={"/cuisine/Italian"}>
+			<SLink to={"/cuisine/Italian"}>
 				<FaPizzaSlice />
 				<h5>Italian</h5>
-			</NavLink>
-			<NavLink to={"/cuisine/American"}>
+			</SLink>
+			<SLink to={"/cuisine/American"}>
 				<FaHamburger />
 				<h5>American</h5>
-			</NavLink>
-			<NavLink to={"/cuisine/Thai"}>
+			</SLink>
+			<SLink to={"/cuisine/Thai"}>
 				<GiNoodles />
 				<h5>Thai</h5>
-			</NavLink>
-			<NavLink to={"/cuisine/Japanese"}>
-				<GiChopsticks />
+			</SLink>
+			<SLink to={"/cuisine/Japanese"}>
+				<GiSushis />
 				<h5>Japanese</h5>
-			</NavLink>
-			<NavLink to={"/cuisine/Seafood"}>
-				<FaFish />
-				<h5>Seafood</h5>
-			</NavLink>
-			<NavLink to={"/cuisine/Desserts"}>
-				<GiCakeSlice />
-				<h5>Desserts</h5>
-			</NavLink>
-			<NavLink to={"/cuisine/Cocktails"}>
-				<FaCocktail />
-				<h5>Cocktails</h5>
-			</NavLink>
+			</SLink>
+			<SLink to={"/cuisine/French"}>
+				<GiCheeseWedge />
+				<h5>Frenc</h5>
+			</SLink>
+			<SLink to={"/cuisine/Mexican"}>
+				<FaPepperHot />
+				<h5>Mexican</h5>
+			</SLink>
 		</List>
 	);
 }
@@ -45,4 +41,37 @@ const List = styled.div`
     margin; 2rem 0;
 `;
 
+const SLink = styled(NavLink)`
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	border-radius: 50%;
+	margin-right: 2rem;
+	text-decoration: none;
+	background: linear-gradient(to right, #494949, #313131);
+	width: 6rem;
+	height: 6rem;
+	transform: scale(0.8);
+
+	h5 {
+		color: #ffffff;
+		font-size: 0.8rem;
+		margin-top: 5px;
+	}
+	svg {
+		color: #ffffff;
+		font-size: 1.5rem;
+	}
+	&.active {
+		background: linear-gradient(to right, #f27121, #e94057);
+
+		svg {
+			color: #ffffff;
+		}
+		h5 {
+			color: #ffffff;
+		}
+	}
+`;
 export default Category;
