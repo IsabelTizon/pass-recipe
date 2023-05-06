@@ -35,6 +35,8 @@ function Category() {
 	);
 }
 
+//Styles
+
 const List = styled.div`
 	display: flex;
 	justify-content: center;
@@ -74,4 +76,6 @@ const SLink = styled(NavLink)`
 		}
 	}
 `;
+
+//Export
 export default Category;
