@@ -6,18 +6,23 @@ import CssBaseline from "@mui/material/CssBaseline";
 import MuiAppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import List from "@mui/material/List";
-import Typography from "@mui/material/Typography";
+// import Typography from "@mui/material/Typography";
 import Divider from "@mui/material/Divider";
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import ListItem from "@mui/material/ListItem";
-import ListItemButton from "@mui/material/ListItemButton";
+// import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import InboxIcon from "@mui/icons-material/MoveToInbox";
-import MailIcon from "@mui/icons-material/Mail";
+
+import { MuiNavbarItems } from "./MuiNavbarItems";
+import { useNavigate } from "react-router-dom";
+
+// import styled from "styled-components";
+import { Link } from "react-router-dom";
+import logo from "../img/Logo.png";
 
 const drawerWidth = 240;
 
@@ -77,6 +82,7 @@ export default function PersistentDrawerLeft() {
 	const handleDrawerClose = () => {
 		setOpen(false);
 	};
+	const navigate = useNavigate();
 
 	return (
 		<Box sx={{ display: "flex" }}>
@@ -92,12 +98,18 @@ export default function PersistentDrawerLeft() {
 					>
 						<MenuIcon />
 					</IconButton>
-					<Typography variant="h6" noWrap component="div">
+					{/* <Typography variant="h6" noWrap component="div">
 						Persistent drawer
-					</Typography>
+					</Typography> */}
+					<LogoLink>
+						<Logo to={"/"}>
+							<img src={logo} alt="logo"></img>
+						</Logo>
+					</LogoLink>
 				</Toolbar>
 			</AppBar>
 			<Drawer
+				// Style List
 				sx={{
 					width: drawerWidth,
 					flexShrink: 0,
@@ -121,27 +133,10 @@ export default function PersistentDrawerLeft() {
 				</DrawerHeader>
 				<Divider />
 				<List>
-					{["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
-						<ListItem key={text} disablePadding>
-							<ListItemButton>
-								<ListItemIcon>
-									{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-								</ListItemIcon>
-								<ListItemText primary={text} />
-							</ListItemButton>
-						</ListItem>
-					))}
-				</List>
-				<Divider />
-				<List>
-					{["All mail", "Trash", "Spam"].map((text, index) => (
-						<ListItem key={text} disablePadding>
-							<ListItemButton>
-								<ListItemIcon>
-									{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-								</ListItemIcon>
-								<ListItemText primary={text} />
-							</ListItemButton>
+					{MuiNavbarItems.map((item, index) => (
+						<ListItem button key={item.id} onClick={() => navigate(item.route)}>
+							<ListItemIcon sx={navbarStyles.icons}>{item.icon}</ListItemIcon>
+							<ListItemText sx={navbarStyles.text} primary={item.label} />
 						</ListItem>
 					))}
 				</List>
@@ -152,3 +147,41 @@ export default function PersistentDrawerLeft() {
 		</Box>
 	);
 }
+
+//Styles
+const navbarStyles = {
+	drawer: {
+		width: 320,
+		flexShrink: 0,
+		"& .MuiDrawer-paper": {
+			width: 320,
+			boxSizing: "border-box",
+			backgroundColor: "#101F33",
+			color: "rgba(255, 255, 255, 0.7)",
+		},
+		"& .Mui-selected": {
+			color: "red",
+		},
+	},
+	icons: {
+		color: "#000000",
+		marginLeft: "20px",
+	},
+	text: {
+		"& span": {
+			marginLeft: "-10px",
+			fontWeight: "600",
+			fontSize: "16px",
+		},
+	},
+};
+// Logo Styles
+const Logo = styled(Link)`
+	width: 80px;
+`;
+
+const LogoLink = styled(Link)`
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+`;
