@@ -2,6 +2,7 @@ import React from "react";
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import styled from "styled-components";
+import { Box } from "@mui/material";
 
 function Searched() {
 	const [searchedRecipes, setSearchedRecipes] = useState([]);
@@ -26,7 +27,9 @@ function Searched() {
 					<Card key={item.id}>
 						<Link to={"/recipe/" + item.id}>
 							<img src={item.image} alt="" />
-							<h4>{item.title}</h4>
+							<Box>
+								<h4>{item.title}</h4>
+							</Box>
 						</Link>
 					</Card>
 				);
@@ -38,7 +41,7 @@ function Searched() {
 const Grid = styled.div`
 	display: grid;
 	grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
-	grid-gap: 3rem;
+	grid-gap: 2rem;
 `;
 
 const Card = styled.div`

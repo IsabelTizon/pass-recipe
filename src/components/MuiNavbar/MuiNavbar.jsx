@@ -1,11 +1,16 @@
 import * as React from "react";
 import { styled, useTheme } from "@mui/material/styles";
-
 // import Typography from "@mui/material/Typography";
-import { ChevronLeft, ChevronRight, Menu } from "@mui/icons-material";
+import {
+	ChevronLeft,
+	ChevronRight,
+	Menu,
+	ShoppingCartOutlined,
+} from "@mui/icons-material";
 
 import {
 	AppBar as MuiAppBar,
+	Badge,
 	Box,
 	CssBaseline,
 	Divider,
@@ -18,7 +23,7 @@ import {
 	Toolbar,
 } from "@mui/material";
 
-import { useNavigate, Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { MuiNavbarItems } from "./MuiNavbarItems";
 
 //Logo
@@ -27,6 +32,8 @@ import Logo from "../../img/Logo.png";
 
 //top bar
 import CommonButton from "../common/button";
+//Badget
+// import createTheme from "../../dashboardTheme";
 
 const drawerWidth = 240;
 
@@ -95,7 +102,7 @@ export default function PersistentDrawerLeft() {
 		<Box sx={{ isplay: "flex" }}>
 			<CssBaseline />
 			<AppBar position="fixed" open={open}>
-				<Toolbar sx={MuiToolbarStyles}>
+				<Toolbar sx={muiToolbarStyles}>
 					{/*Burger icon*/}
 					<IconButton
 						color="inherit"
@@ -112,26 +119,35 @@ export default function PersistentDrawerLeft() {
 
 					{/*Logo */}
 					<Link to={"/"}>
-						<img src={Logo} width="90" height="55" alt="logo"></img>
+						<img src={Logo} width="80" height="45" alt="logo"></img>
 					</Link>
 
 					{/*Login Button */}
-					<Link to={"/"}>
-						<CommonButton
-							sx={buttonStyles}
-							variant="authentification"
-							size="medium"
-						>
-							Log in
-						</CommonButton>
-					</Link>
+					<Box>
+						<Link to={"/"}>
+							<CommonButton
+								sx={buttonStyles}
+								variant="authentification"
+								size="small"
+							>
+								Log in
+							</CommonButton>
+						</Link>
 
-					{/* Cart */}
-					<Link to={"/"}>
-						<CommonButton sx={buttonStyles} variant="close" size="medium">
+						{/* Cart */}
+						<Link to={"/"}>
+							{/* <CommonButton sx={buttonStyles} variant="close" size="medium">
 							carrito
-						</CommonButton>
-					</Link>
+						</CommonButton> */}
+							{/* <ShoppingCartIcon>size="medium"</ShoppingCartIcon> */}
+
+							<IconButton size="medium">
+								<Badge badgeContent={4} max={999} color="error">
+									<ShoppingCartOutlined fontSize="medium" />
+								</Badge>
+							</IconButton>
+						</Link>
+					</Box>
 				</Toolbar>
 			</AppBar>
 
@@ -158,7 +174,7 @@ export default function PersistentDrawerLeft() {
 				<Divider />
 				<List>
 					{MuiNavbarItems.map((item, index) => (
-						<ListItem button key={item.id} onClick={() => navigate(item.route)}>
+						<ListItem key={item.id} onClick={() => navigate(item.route)}>
 							<ListItemIcon sx={navbarStyles.icons}>{item.icon}</ListItemIcon>
 							<ListItemText sx={navbarStyles.text} primary={item.label} />
 						</ListItem>
@@ -210,10 +226,9 @@ const buttonStyles = {
 	},
 };
 
-const MuiToolbarStyles = {
+const muiToolbarStyles = {
 	background: "#ffffff",
+	display: "flex",
+	flexDirection: "row",
+	justifyContent: "space-between",
 };
-
-// const MuiAppBar = {
-
-// };
