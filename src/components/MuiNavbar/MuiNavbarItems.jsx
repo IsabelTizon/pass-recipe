@@ -15,7 +15,7 @@ export const MuiNavbarItems = [
 		id: 0,
 		icon: <HomeIcon />,
 		label: "Home",
-		route: "Home",
+		route: "",
 	},
 	{
 		id: 1,

@@ -1,28 +1,32 @@
 import * as React from "react";
 import { styled, useTheme } from "@mui/material/styles";
-import Box from "@mui/material/Box";
-import Drawer from "@mui/material/Drawer";
-import CssBaseline from "@mui/material/CssBaseline";
-import MuiAppBar from "@mui/material/AppBar";
-import Toolbar from "@mui/material/Toolbar";
-import List from "@mui/material/List";
+
 // import Typography from "@mui/material/Typography";
-import Divider from "@mui/material/Divider";
-import IconButton from "@mui/material/IconButton";
-import MenuIcon from "@mui/icons-material/Menu";
-import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
-import ChevronRightIcon from "@mui/icons-material/ChevronRight";
-import ListItem from "@mui/material/ListItem";
-// import ListItemButton from "@mui/material/ListItemButton";
-import ListItemIcon from "@mui/material/ListItemIcon";
-import ListItemText from "@mui/material/ListItemText";
+import { ChevronLeft, ChevronRight, Menu } from "@mui/icons-material";
 
+import {
+	AppBar as MuiAppBar,
+	Box,
+	CssBaseline,
+	Divider,
+	Drawer,
+	IconButton,
+	List,
+	ListItem,
+	ListItemIcon,
+	ListItemText,
+	Toolbar,
+} from "@mui/material";
+
+import { useNavigate, Link } from "react-router-dom";
 import { MuiNavbarItems } from "./MuiNavbarItems";
-import { useNavigate } from "react-router-dom";
 
+//Logo
 // import styled from "styled-components";
-import { Link } from "react-router-dom";
-import logo from "../img/Logo.png";
+import Logo from "../../img/Logo.png";
+
+//top bar
+import CommonButton from "../common/button";
 
 const drawerWidth = 240;
 
@@ -45,6 +49,7 @@ const Main = styled("main", { shouldForwardProp: (prop) => prop !== "open" })(
 	})
 );
 
+//
 const AppBar = styled(MuiAppBar, {
 	shouldForwardProp: (prop) => prop !== "open",
 })(({ theme, open }) => ({
@@ -62,6 +67,7 @@ const AppBar = styled(MuiAppBar, {
 	}),
 }));
 
+// Left Navbar
 const DrawerHeader = styled("div")(({ theme }) => ({
 	display: "flex",
 	alignItems: "center",
@@ -75,6 +81,7 @@ export default function PersistentDrawerLeft() {
 	const theme = useTheme();
 	const [open, setOpen] = React.useState(false);
 
+	// Drawer
 	const handleDrawerOpen = () => {
 		setOpen(true);
 	};
@@ -85,29 +92,50 @@ export default function PersistentDrawerLeft() {
 	const navigate = useNavigate();
 
 	return (
-		<Box sx={{ display: "flex" }}>
+		<Box sx={{ isplay: "flex" }}>
 			<CssBaseline />
 			<AppBar position="fixed" open={open}>
-				<Toolbar>
+				<Toolbar sx={MuiToolbarStyles}>
+					{/*Burger icon*/}
 					<IconButton
 						color="inherit"
 						aria-label="open drawer"
 						onClick={handleDrawerOpen}
 						edge="start"
-						sx={{ mr: 2, ...(open && { display: "none" }) }}
+						sx={{ color: "#000", mr: 2, ...(open && { display: "none" }) }}
 					>
-						<MenuIcon />
+						<Menu />
 					</IconButton>
 					{/* <Typography variant="h6" noWrap component="div">
 						Persistent drawer
 					</Typography> */}
-					<LogoLink>
-						<Logo to={"/"}>
-							<img src={logo} alt="logo"></img>
-						</Logo>
-					</LogoLink>
+
+					{/*Logo */}
+					<Link to={"/"}>
+						<img src={Logo} width="90" height="55" alt="logo"></img>
+					</Link>
+
+					{/*Login Button */}
+					<Link to={"/"}>
+						<CommonButton
+							sx={buttonStyles}
+							variant="authentification"
+							size="medium"
+						>
+							Log in
+						</CommonButton>
+					</Link>
+
+					{/* Cart */}
+					<Link to={"/"}>
+						<CommonButton sx={buttonStyles} variant="close" size="medium">
+							carrito
+						</CommonButton>
+					</Link>
 				</Toolbar>
 			</AppBar>
+
+			{/* Drawer */}
 			<Drawer
 				// Style List
 				sx={{
@@ -124,11 +152,7 @@ export default function PersistentDrawerLeft() {
 			>
 				<DrawerHeader>
 					<IconButton onClick={handleDrawerClose}>
-						{theme.direction === "ltr" ? (
-							<ChevronLeftIcon />
-						) : (
-							<ChevronRightIcon />
-						)}
+						{theme.direction === "ltr" ? <ChevronLeft /> : <ChevronRight />}
 					</IconButton>
 				</DrawerHeader>
 				<Divider />
@@ -150,38 +174,46 @@ export default function PersistentDrawerLeft() {
 
 //Styles
 const navbarStyles = {
-	drawer: {
-		width: 320,
-		flexShrink: 0,
-		"& .MuiDrawer-paper": {
-			width: 320,
-			boxSizing: "border-box",
-			backgroundColor: "#101F33",
-			color: "rgba(255, 255, 255, 0.7)",
-		},
-		"& .Mui-selected": {
-			color: "red",
-		},
-	},
+	// drawer: {
+	// 	width: 320,
+	// 	flexShrink: 0,
+	// 	"& .MuiDrawer-paper": {
+	// 		width: 320,
+	// 		boxSizing: "border-box",
+	// 		backgroundColor: "#101F33",
+	// 		color: "rgba(255, 255, 255, 0.7)",
+	// 	},
+	// 	"& .Mui-selected": {
+	// 		color: "red",
+	// 	},
+	// },
 	icons: {
 		color: "#000000",
 		marginLeft: "20px",
 	},
-	text: {
-		"& span": {
-			marginLeft: "-10px",
-			fontWeight: "600",
-			fontSize: "16px",
-		},
+	// text: {
+	// 	"& span": {
+	// 		marginLeft: "-10px",
+	// 		fontWeight: "600",
+	// 		fontSize: "16px",
+	// 	},
+	// },
+};
+
+const buttonStyles = {
+	color: "#000000",
+	fontSize: "0.7rem",
+	border: "1px solid #540202",
+	"&:hover": {
+		color: "#ffffff",
+		background: "#540202",
 	},
 };
-// Logo Styles
-const Logo = styled(Link)`
-	width: 80px;
-`;
 
-const LogoLink = styled(Link)`
-	display: flex;
-	justify-content: flex-start;
-	align-items: center;
-`;
+const MuiToolbarStyles = {
+	background: "#ffffff",
+};
+
+// const MuiAppBar = {
+
+// };
