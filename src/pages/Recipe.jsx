@@ -1,8 +1,8 @@
+import React from "react";
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { useParams } from "react-router-dom";
-
-import React from "react";
+import CommonButton from "../components/common/button";
 
 function Recipe() {
 	let params = useParams();
@@ -29,26 +29,33 @@ function Recipe() {
 			<Box>
 				<img src={details.image} alt={""} />
 				<Info>
-					<Button
+					<CommonButton
+						sx={buttonStyles}
+						variant="authentification"
+						size="small"
 						className={activeTab === "Recipe" ? "active" : ""}
 						onClick={() => setActiveTab("Recipe")}
 					>
 						Recipe
-					</Button>
-					<Button
+					</CommonButton>
+					<CommonButton
+						sx={buttonStyles}
+						variant="authentification"
+						size="small"
 						className={activeTab === "Ingredients" ? "active" : ""}
 						onClick={() => setActiveTab("Ingredients")}
 					>
 						Ingredients
-					</Button>
+					</CommonButton>
 
-					{/*Condition */}
+					{/* */}
 					{activeTab === "Recipe" && (
 						<div>
 							<h4 dangerouslySetInnerHTML={{ __html: details.summary }}></h4>
 							<h4 dangerouslySetInnerHTML={{ __html: details.recipe }}></h4>
 						</div>
 					)}
+					{/* */}
 					{activeTab === "Ingredients" && (
 						<ul>
 							{details.extendedIngredients.map((ingredient) => (
@@ -103,19 +110,15 @@ const DetailWrapper = styled.div`
 	}
 `;
 
-// const ImageId = styled.div`
-// 	img {
-// 		width: 90%;
-// 	}
-// `;
-const Button = styled.button`
-	padding: 1rem 2rem;
-	color: #313131;
-	background: #ffffff;
-	border: 0.1rem solid #505c26;
-	margin-right: 2rem;
-	font-weight: 600;
-`;
+const buttonStyles = {
+	margin: "0.3rem",
+	color: "#505c26",
+	border: "1px solid #505c26",
+	"&:hover": {
+		color: "#ffffff",
+		background: "#505c26",
+	},
+};
 
 const Info = styled.div`
 	margin-left: 3rem;

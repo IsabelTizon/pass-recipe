@@ -217,12 +217,12 @@ const navbarStyles = {
 };
 
 const buttonStyles = {
-	color: "#000000",
+	color: "#505c26",
 	fontSize: "0.7rem",
-	border: "1px solid #540202",
+	border: "1px solid #505c26",
 	"&:hover": {
 		color: "#ffffff",
-		background: "#540202",
+		background: "#505c26",
 	},
 };
 
