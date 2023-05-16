@@ -25,17 +25,6 @@ function Popular() {
 
 			setPopular(JSON.parse(check)); // JSON.parse: takes the argument of the JSON source and converts it to the JSON format, because the data was in string
 		} else {
-			// const api = await fetch(
-			// 	// 'await' expressions are only allowed within async functions to wait to process the code before pop in in the next line
-			// 	`https://api.spoonacular.com/recipes/random?apiKey=${process.env.REACT_APP_API_KEY}&number=9`
-			// );
-			// const data = await api.json();
-
-			// localStorage.setItem("popular", JSON.stringify(data.recipes)); // Saving the array like a string
-			// // console.log(data);
-			// setPopular(data.recipes);
-			// console.log(data.recipes);
-
 			const api = await fetch(
 				// 'await' expressions are only allowed within async functions to wait to process the code before pop in in the next line
 				`https://api.spoonacular.com/recipes/random?apiKey=${process.env.REACT_APP_API_KEY}&number=9`
@@ -78,11 +67,6 @@ function Popular() {
 										<Box>
 											{/*return title img */}
 											<p>{recipe.title}</p>
-											{/*return calories recipe */}
-											<p>
-												{recipe.amount}
-												{recipe.unit}
-											</p>
 										</Box>
 										{/* <Gradient /> */}
 									</Link>
@@ -106,12 +90,11 @@ const Card = styled.div`
 	min-height: 18rem;
 	border-radius: 2rem;
 	overflow: hidden;
+	border: 1px solid #718135;
 
 	img {
-		border-radius: 2rem;
-		left: 0;
+		border-radius: 2rem 2rem 0 0;
 		width: 100%;
-		height: 100%;
 		object-fit: cover;
 	}
 
@@ -119,10 +102,10 @@ const Card = styled.div`
 		position: absolute;
 		z-index: 10;
 		color: #000000;
-		width: 80%;
-		text-align: center;
+		width: 90%;
+		padding-top: 1.5rem;
 		font-weight: 600;
-		font-size: 1rem;
+		font-size: 0.8rem;
 	}
 `;
 // const Gradient = styled.div`

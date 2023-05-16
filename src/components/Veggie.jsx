@@ -61,10 +61,10 @@ function Veggie() {
 								{/* each card would be a slide */}
 								<Card>
 									<Link to={"/recipe/" + recipe.id}>
-										{/*return Recipe Title*/}
-										<p>{recipe.title}</p>
 										{/* return img */}
 										<img src={recipe.image} alt="recipe.title" />
+										{/*return Recipe Title*/}
+										<p>{recipe.title}</p>
 										{/* <Gradient /> */}
 									</Link>
 								</Card>
@@ -91,23 +91,26 @@ const Card = styled.div`
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	background-color: #505c26;
 
 	img {
-		border-radius: 2rem;
+		border-radius: 2rem 2rem 0 0;
 		width: 100%;
 	}
-
+	a {
+		text-decoration: none;
+	}
 	p {
-		position: absolute;
-		z-index: 10;
 		color: white;
 		width: 100%;
 		text-align: center;
-		font-weight: 600;
 		font-size: 1rem;
-		background: linear-gradient(rgba(80, 92, 38), rgba(113, 129, 53));
-		background-color: #505c26;
-		padding: 5px;
+		background: linear-gradient((to right, #324001, #232d02));
+		padding: 0.8rem;
+		display: -webkit-box;
+		-webkit-line-clamp: 1;
+		-webkit-box-orient: vertical;
+		overflow: hidden;
 	}
 `;
 // const Gradient = styled.div`

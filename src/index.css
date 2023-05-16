@@ -17,13 +17,19 @@ code {
 	font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
 		monospace;
 }
+h2 {
+	color: #505c26;
+}
 h4 {
-	font-size: 1rem;
+	font-size: 0.9rem;
+	line-height: 2rem;
+	font-weight: 300;
 }
 h3 {
 	font-size: 1.5rem;
 	line-height: 2.5rem;
 	margin: 2rem 0rem;
+	color: #505c26;
 }
 
 a {
