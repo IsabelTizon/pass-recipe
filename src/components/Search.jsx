@@ -39,8 +39,9 @@ const FormStyle = styled.form`
 	}
 
 	input {
-		border: none;
-		background: linear-gradient(#494949, #313131);
+		border: 1px solid #505c26;
+		/* background: linear-gradient(#494949, #313131); */
+		background-color: #ffffff;
 		font-size: 1rem;
 		color: #ffffff;
 		padding: 0.5rem 3rem;
@@ -53,7 +54,7 @@ const FormStyle = styled.form`
 		top: 50%;
 		left: 0;
 		transform: translate(100%, -50%);
-		color: #ffffff;
+		color: #505c26;
 	}
 `;
 export default Search;

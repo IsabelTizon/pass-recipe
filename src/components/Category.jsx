@@ -40,7 +40,7 @@ function Category() {
 const List = styled.div`
 	display: flex;
 	justify-content: center;
-    margin; 2rem 0;
+	margin: 2rem 0;
 `;
 
 const SLink = styled(NavLink)`
@@ -51,7 +51,7 @@ const SLink = styled(NavLink)`
 	border-radius: 50%;
 	margin-right: 2rem;
 	text-decoration: none;
-	background: linear-gradient(to right, #494949, #313131);
+	background: linear-gradient(to right, #515d26, #505c26);
 	width: 4.5rem;
 	height: 4.5rem;
 	transform: scale(0.8);
@@ -66,7 +66,7 @@ const SLink = styled(NavLink)`
 		font-size: 1.5rem;
 	}
 	&.active {
-		background: linear-gradient(to right, #f27121, #e94057);
+		background: linear-gradient(to right, #eed3c0, #cda082);
 
 		svg {
 			color: #ffffff;

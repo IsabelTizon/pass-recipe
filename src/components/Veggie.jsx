@@ -51,21 +51,21 @@ function Veggie() {
 						arrows: false,
 						pagination: false,
 						drag: "free",
-						gap: "5rem",
+						gap: "3rem",
 					}}
 				>
 					{veggie.map((recipe) => {
 						return (
 							//key={recipe.id}:
 							<SplideSlide key={recipe.id}>
-								{/*each card would be a slide*/}
+								{/* each card would be a slide */}
 								<Card>
 									<Link to={"/recipe/" + recipe.id}>
 										{/*return Recipe Title*/}
 										<p>{recipe.title}</p>
-										{/*return imag*/}
+										{/* return img */}
 										<img src={recipe.image} alt="recipe.title" />
-										<Gradient />
+										{/* <Gradient /> */}
 									</Link>
 								</Card>
 							</SplideSlide>
@@ -94,11 +94,7 @@ const Card = styled.div`
 
 	img {
 		border-radius: 2rem;
-		position: absolute;
-		left: 0;
 		width: 100%;
-		height: 100%;
-		object-fit: cover;
 	}
 
 	p {
@@ -109,14 +105,17 @@ const Card = styled.div`
 		text-align: center;
 		font-weight: 600;
 		font-size: 1rem;
+		background: linear-gradient(rgba(80, 92, 38), rgba(113, 129, 53));
+		background-color: #505c26;
+		padding: 5px;
 	}
 `;
-const Gradient = styled.div`
-	z-index: 3;
-	position: absolute;
-	width: 100%;
-	height: 100%;
-	background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5));
-`;
+// const Gradient = styled.div`
+// 	z-index: 3;
+// 	position: absolute;
+// 	width: 100%;
+// 	height: 100%;
+// 	background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5));
+// `;
 
 export default Veggie;

@@ -25,6 +25,17 @@ function Popular() {
 
 			setPopular(JSON.parse(check)); // JSON.parse: takes the argument of the JSON source and converts it to the JSON format, because the data was in string
 		} else {
+			// const api = await fetch(
+			// 	// 'await' expressions are only allowed within async functions to wait to process the code before pop in in the next line
+			// 	`https://api.spoonacular.com/recipes/random?apiKey=${process.env.REACT_APP_API_KEY}&number=9`
+			// );
+			// const data = await api.json();
+
+			// localStorage.setItem("popular", JSON.stringify(data.recipes)); // Saving the array like a string
+			// // console.log(data);
+			// setPopular(data.recipes);
+			// console.log(data.recipes);
+
 			const api = await fetch(
 				// 'await' expressions are only allowed within async functions to wait to process the code before pop in in the next line
 				`https://api.spoonacular.com/recipes/random?apiKey=${process.env.REACT_APP_API_KEY}&number=9`
@@ -51,7 +62,7 @@ function Popular() {
 						arrows: false,
 						pagination: false,
 						drag: "free",
-						gap: "5rem",
+						gap: "2rem",
 					}}
 				>
 					{popular.map((recipe) => {
@@ -61,11 +72,19 @@ function Popular() {
 								{/*each card would be a slide*/}
 								<Card>
 									<Link to={"/recipe/" + recipe.id}>
-										{/*return Recipe Title*/}
-										<p>{recipe.title}</p>
 										{/*return imag*/}
 										<img src={recipe.image} alt="recipe.title" />
-										<Gradient />
+										{/*return Recipe Title*/}
+										<Box>
+											{/*return title img */}
+											<p>{recipe.title}</p>
+											{/*return calories recipe */}
+											<p>
+												{recipe.amount}
+												{recipe.unit}
+											</p>
+										</Box>
+										{/* <Gradient /> */}
 									</Link>
 								</Card>
 							</SplideSlide>
@@ -87,14 +106,9 @@ const Card = styled.div`
 	min-height: 18rem;
 	border-radius: 2rem;
 	overflow: hidden;
-	position: relative;
-	display: flex;
-	align-items: center;
-	justify-content: center;
 
 	img {
 		border-radius: 2rem;
-		position: absolute;
 		left: 0;
 		width: 100%;
 		height: 100%;
@@ -104,19 +118,26 @@ const Card = styled.div`
 	p {
 		position: absolute;
 		z-index: 10;
-		color: white;
-		width: 100%;
+		color: #000000;
+		width: 80%;
 		text-align: center;
 		font-weight: 600;
 		font-size: 1rem;
 	}
 `;
-const Gradient = styled.div`
-	z-index: 3;
-	position: absolute;
-	width: 100%;
-	height: 100%;
-	background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5));
-`;
+// const Gradient = styled.div`
+// 	z-index: 3;
+// 	position: absolute;
+// 	width: 100%;
+// 	height: 100%;
+// 	background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5));
+// `;
 
+const Box = styled.div`
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	text-align: center;
+`;
 export default Popular;
