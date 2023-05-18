@@ -204,16 +204,26 @@ const navbarStyles = {
 	// 	},
 	// },
 	icons: {
-		color: "#000000",
+		color: "#5e5d5d",
 		marginLeft: "20px",
+		minWidth: 35,
+
+		"&:hover": {
+			color: "#024e19",
+		},
 	},
-	// text: {
-	// 	"& span": {
-	// 		marginLeft: "-10px",
-	// 		fontWeight: "600",
-	// 		fontSize: "16px",
-	// 	},
-	// },
+	text: {
+		color: "#5e5d5d",
+
+		"&:hover": {
+			color: "#024e19",
+		},
+		// "& span": {
+		// 	marginLeft: "-10px",
+		// 	fontWeight: "600",
+		// 	fontSize: "16px",
+		// },
+	},
 };
 
 const buttonStyles = {

@@ -4,7 +4,8 @@ import RestaurantMenuIcon from "@mui/icons-material/RestaurantMenu";
 import FoodBankIcon from "@mui/icons-material/FoodBank";
 import MonitorWeightIcon from "@mui/icons-material/MonitorWeight";
 import FavoriteIcon from "@mui/icons-material/Favorite";
-import PersonIcon from "@mui/icons-material/Person";
+// import PersonIcon from "@mui/icons-material/Person";
+import { SiCodechef } from "react-icons/si";
 
 import SettingsEthernetIcon from "@mui/icons-material/SettingsEthernet";
 // import SettingsInputComponentIcon from "@mui/icons-material/SettingsInputComponent";
@@ -47,9 +48,15 @@ export const MuiNavbarItems = [
 		label: "Favorites",
 		route: "Favorites",
 	},
+	// {
+	// 	id: 6,
+	// 	icon: <PersonIcon />,
+	// 	label: "Account",
+	// 	route: "Account",
+	// },
 	{
 		id: 6,
-		icon: <PersonIcon />,
+		icon: <SiCodechef />,
 		label: "Account",
 		route: "Account",
 	},
