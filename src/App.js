@@ -1,6 +1,4 @@
 import Pages from "./pages/Pages";
-import Category from "./components/Category";
-import Search from "./components/Search";
 
 import { BrowserRouter } from "react-router-dom"; // to navigate pages import
 import { ThemeProvider } from "@mui/material/styles";
@@ -18,8 +16,7 @@ function App() {
 			<BrowserRouter>
 				<Box as="main" sx={{ width: "80%", margin: "0 auto" }}>
 					<MuiNavbar />
-					<Search />
-					<Category />
+
 					<Pages />
 				</Box>
 			</BrowserRouter>

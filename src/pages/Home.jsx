@@ -1,5 +1,7 @@
 import Veggie from "../components/Veggie";
 import Popular from "../components/Popular";
+import Category from "../components/Category";
+import Search from "../components/Search";
 
 import { motion } from "framer-motion";
 
@@ -13,6 +15,8 @@ function Home() {
 			exit={{ opacity: 0 }}
 			transition={{ duration: 0.5 }}
 		>
+			<Search />
+			<Category />
 			<Veggie />
 			<Popular />
 		</motion.div>
