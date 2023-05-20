@@ -11,7 +11,7 @@ function Recipe() {
 
 	const fetchDetails = async () => {
 		const data = await fetch(
-			`https://api.spoonacular.com/recipes/${params.id}/information?apiKey=${process.env.REACT_APP_SECOND_API_KEY}`
+			`https://api.spoonacular.com/recipes/${params.id}/information?apiKey=${process.env.REACT_API_KEY}`
 		);
 		const detailData = await data.json();
 		setDetails(detailData);
@@ -31,7 +31,7 @@ function Recipe() {
 				<Info>
 					<CommonButton
 						sx={buttonStyles}
-						variant="authentification"
+						// variant="authentification"
 						size="small"
 						className={activeTab === "Recipe" ? "active" : ""}
 						onClick={() => setActiveTab("Recipe")}
@@ -40,7 +40,7 @@ function Recipe() {
 					</CommonButton>
 					<CommonButton
 						sx={buttonStyles}
-						variant="authentification"
+						// variant="authentification"
 						size="small"
 						className={activeTab === "Ingredients" ? "active" : ""}
 						onClick={() => setActiveTab("Ingredients")}

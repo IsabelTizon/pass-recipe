@@ -12,7 +12,7 @@ function Search() {
 		navigate("/searched/" + input);
 	};
 	return (
-		<div>
+		<>
 			<FormStyle onSubmit={submitHandler}>
 				<div>
 					<FaSearch></FaSearch>
@@ -23,7 +23,7 @@ function Search() {
 					/>
 				</div>
 			</FormStyle>
-		</div>
+		</>
 	);
 }
 

@@ -28,7 +28,7 @@ export const MuiNavbarItems = [
 		id: 2,
 		icon: <FoodBankIcon />,
 		label: "Meal Plans",
-		route: "Meal-Plans",
+		route: "mealPlanning",
 	},
 	{
 		id: 3,

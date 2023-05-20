@@ -1,6 +1,7 @@
 import Pages from "./pages/Pages";
 import Category from "./components/Category";
 import Search from "./components/Search";
+
 import { BrowserRouter } from "react-router-dom"; // to navigate pages import
 import { ThemeProvider } from "@mui/material/styles";
 import { Box } from "@mui/material";
