@@ -16,7 +16,6 @@ function App() {
 			<BrowserRouter>
 				<Box as="main" sx={{ width: "80%", margin: "0 auto" }}>
 					<MuiNavbar />
-
 					<Pages />
 				</Box>
 			</BrowserRouter>

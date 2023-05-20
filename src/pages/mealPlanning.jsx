@@ -11,7 +11,7 @@ export default function MealPlanning() {
 
 	const getMealData = async () => {
 		const api = await fetch(
-			`https://api.spoonacular.com/mealplanner/generate?apiKey=${process.env.REACT_APP_API_KEY}&targetCalories=${calories}`
+			`https://api.spoonacular.com/mealplanner/generate?apiKey=${process.env.REACT_APP_API_KEY}&timeFrame=day&targetCalories=${calories}`
 		);
 
 		const data = await api.json();
@@ -33,7 +33,7 @@ export default function MealPlanning() {
 				</CommonButton>
 			</FormStyle>
 
-			{mealData && <MealList mealList={mealData} />}
+			{mealData && <MealList mealData={mealData} />}
 		</>
 	);
 }
