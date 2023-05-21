@@ -17,12 +17,10 @@ function Veggie() {
 
 	const getVeggie = async () => {
 		// Storing our fetch in our localStorage for don't fetch over and over again and don't loose my maximun of request per day in spoonaculary API
-
 		const check = localStorage.getItem("veggie"); // get in the item
 
 		if (check) {
 			// If there is an item in localStorage, set it and don't do the fetching again
-
 			setVeggie(JSON.parse(check)); // JSON.parse: takes the argument of the JSON source and converts it to the JSON format, because the data was in string
 		} else {
 			const api = await fetch(
@@ -34,6 +32,7 @@ function Veggie() {
 			localStorage.setItem("veggie", JSON.stringify(data.recipes)); // Saving the array like a string
 			// console.log(data);
 			setVeggie(data.recipes);
+
 			console.log(data.recipes);
 		}
 	};

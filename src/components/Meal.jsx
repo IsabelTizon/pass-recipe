@@ -1,22 +1,18 @@
 import React from "react";
 import { useState, useEffect } from "react";
 
-export default function MealRecipes({ meal }) {
+export default function Meal({ meal }) {
 	const [imageUrl, setImageUrl] = useState("");
-	console.log(meal);
-
-	const getMeal = async () => {
-		const api = await fetch(
-			`https://api.spoonacular.com/recipes/${meal.id}/information?apiKey=${process.env.REACT_APP_API_KEY}&includeNutrition=false`
-		);
-		const data = await api.json();
-		setImageUrl(data.image);
-	};
 
 	useEffect(() => {
-		getMeal(meal.id);
-		console.log(meal.id);
-	});
+		fetch(
+			`https://api.spoonacular.com/recipes/${meal.id}/information?apiKey=${process.env.REACT_APP_API_KEY}&includeNutrition=false`
+		)
+			.then((response) => response.json())
+			.then((data) => {
+				setImageUrl(data.image);
+			});
+	}, [meal.id]);
 
 	return (
 		<article>

@@ -9,17 +9,19 @@ function Recipe() {
 	const [details, setDetails] = useState({});
 	const [activeTab, setActiveTab] = useState("recipe");
 
+	useEffect(() => {
+		fetchDetails();
+	}, [params.id]);
+
 	const fetchDetails = async () => {
 		const data = await fetch(
 			`https://api.spoonacular.com/recipes/${params.id}/information?apiKey=${process.env.REACT_API_KEY}`
 		);
-		const detailData = await data.json();
-		setDetails(detailData);
-	};
 
-	useEffect(() => {
-		fetchDetails();
-	}, [params.id]);
+		const recipesSearched = await data.json();
+
+		setDetails(recipesSearched);
+	};
 
 	return (
 		<DetailWrapper>
