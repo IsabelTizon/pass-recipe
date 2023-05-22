@@ -23,7 +23,7 @@ export default function MealPlanning() {
 	return (
 		<>
 			<Hero>
-				<img src={hero} alt="hero meal plan" />
+				<img className="hero" src={hero} alt="hero meal plan" />
 				{/* React Fragment */}
 				<Plan>
 					<h1>Get Daily Meal Plan</h1>
@@ -41,15 +41,15 @@ export default function MealPlanning() {
 						</CommonButton>
 					</div>
 				</Plan>
+				{mealData && <MealList mealData={mealData} />}
 			</Hero>
-			{mealData && <MealList mealData={mealData} />}
 		</>
 	);
 }
 
 //Styles
 const Hero = styled.div`
-	img {
+	img.hero {
 		width: 100vw;
 		height: calc(100vh - 100px);
 		position: relative;
