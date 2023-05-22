@@ -28,7 +28,7 @@ export default function MealPlanning() {
 				<Plan>
 					<h1>Get Daily Meal Plan</h1>
 					<h4>
-						Choose your dauly plan based in the calories do you want to ingest
+						Choose your daily plan based in the calories you want to ingest
 					</h4>
 					<div>
 						<input
