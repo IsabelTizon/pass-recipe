@@ -14,7 +14,8 @@ function App() {
 		<div className="App">
 			<ThemeProvider theme={dashboardTheme}></ThemeProvider>
 			<BrowserRouter>
-				<Box as="main" sx={{ width: "80%", margin: "0 auto" }}>
+				{/* <Box as="main" sx={{ width: "80%", margin: "0 auto" }}> */}
+				<Box as="main">
 					<MuiNavbar />
 					<Pages />
 				</Box>
