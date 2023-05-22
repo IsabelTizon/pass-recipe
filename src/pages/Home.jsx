@@ -1,26 +1,35 @@
+import React from "react";
 import Veggie from "../components/Veggie";
 import Popular from "../components/Popular";
 import Category from "../components/Category";
 import Search from "../components/Search";
 
 import { motion } from "framer-motion";
+import styled from "styled-components";
 
-import React from "react";
-
-function Home() {
+export default function Home() {
 	return (
-		<motion.div
-			animate={{ opacity: 1 }}
-			initial={{ opacity: 0 }}
-			exit={{ opacity: 0 }}
-			transition={{ duration: 0.5 }}
-		>
-			<Search />
-			<Category />
-			<Veggie />
-			<Popular />
-		</motion.div>
+		<>
+			<motion.div
+				animate={{ opacity: 1 }}
+				initial={{ opacity: 0 }}
+				exit={{ opacity: 0 }}
+				transition={{ duration: 0.5 }}
+			>
+				<MainHome>
+					<Search />
+					<Category />
+					<Veggie />
+					<Popular />
+				</MainHome>
+			</motion.div>
+		</>
 	);
 }
 
-export default Home;
+//Styles
+const MainHome = styled.div`
+	width: 80%;
+	margin: 0 auto;
+	padding-top: 5%;
+`;

@@ -53,6 +53,10 @@ function Cuisine() {
 const Flex = styled.div`
 	display: flex;
 	flex-direction: column;
+
+	width: 80%;
+	margin: 0 auto;
+	padding-top: 5%;
 `;
 const Grid = styled(motion.div)`
 	display: grid;
