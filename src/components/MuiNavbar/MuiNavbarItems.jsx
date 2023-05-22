@@ -22,7 +22,7 @@ export const MuiNavbarItems = [
 		id: 1,
 		icon: <RestaurantMenuIcon />,
 		label: "Recipes",
-		route: "Recipes",
+		route: "recipes",
 	},
 	{
 		id: 2,
@@ -34,19 +34,19 @@ export const MuiNavbarItems = [
 		id: 3,
 		icon: <MonitorWeightIcon />,
 		label: "Diets",
-		route: "Diets",
+		route: "diets",
 	},
 	{
 		id: 4,
 		icon: <SettingsEthernetIcon />,
 		label: "Blog",
-		route: "Blog",
+		route: "blog",
 	},
 	{
 		id: 5,
 		icon: <FavoriteIcon />,
 		label: "Favorites",
-		route: "Favorites",
+		route: "favorites",
 	},
 	// {
 	// 	id: 6,
@@ -57,7 +57,7 @@ export const MuiNavbarItems = [
 	{
 		id: 6,
 		icon: <SiCodechef />,
-		label: "Account",
-		route: "Account",
+		label: "Register",
+		route: "login",
 	},
 ];

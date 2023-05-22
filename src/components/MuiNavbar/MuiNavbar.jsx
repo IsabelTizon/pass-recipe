@@ -124,7 +124,7 @@ export default function PersistentDrawerLeft() {
 
 					{/*Login Button */}
 					<Box>
-						<Link to={"/"}>
+						<Link to={"../../login"}>
 							<CommonButton
 								sx={buttonStyles}
 								variant="authentification"

@@ -4,11 +4,12 @@ import Cuisine from "./Cuisine";
 import Searched from "./Searched";
 import Recipe from "./Recipe";
 import MealPlanning from "./mealPlanning";
-// import mealPlanning from "./mealPlanning";
+import Login from "./login";
+import SignUp from "./signup";
 import { Route, Routes, useLocation } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 
-function Pages() {
+export default function Pages() {
 	const location = useLocation();
 
 	return (
@@ -19,9 +20,9 @@ function Pages() {
 				<Route path="/searched/:search" element={<Searched />} />
 				<Route path="/recipe/:id" element={<Recipe />} />
 				<Route path="/mealPlanning" element={<MealPlanning />} />
+				<Route path="/login" element={<Login />} />
+				<Route path="/signup" element={<SignUp />} />
 			</Routes>
 		</AnimatePresence>
 	);
 }
-
-export default Pages;
