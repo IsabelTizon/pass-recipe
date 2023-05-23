@@ -13,29 +13,13 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 
-function Copyright(props) {
-	return (
-		<Typography
-			variant="body2"
-			color="text.secondary"
-			align="center"
-			{...props}
-		>
-			{"Copyright © "}
-			<Link color="inherit" href="https://mui.com/">
-				Your Website
-			</Link>{" "}
-			{new Date().getFullYear()}
-			{"."}
-		</Typography>
-	);
-}
-
-// TODO remove, this demo shouldn't need to reset the theme.
-
-const defaultTheme = createTheme();
-
 export default function SignUp() {
+	const defaultTheme = createTheme({
+		palette: {
+			success: { main: "#505c26" },
+		},
+	});
+
 	const handleSubmit = (event) => {
 		event.preventDefault();
 		const data = new FormData(event.currentTarget);
@@ -115,7 +99,7 @@ export default function SignUp() {
 							<Grid item xs={12}>
 								<FormControlLabel
 									control={
-										<Checkbox value="allowExtraEmails" color="primary" />
+										<Checkbox value="allowExtraEmails" color="success" />
 									}
 									label="I want to receive inspiration, marketing promotions and updates via email."
 								/>
@@ -131,20 +115,25 @@ export default function SignUp() {
 						</CommonButton>
 						<Grid container justifyContent="flex-end">
 							<Grid item>
-								<Link href="#" variant="body2">
+								<Link href="/login" variant="body2" sx={links}>
 									Already have an account? Sign in
 								</Link>
 							</Grid>
 						</Grid>
 					</Box>
 				</Box>
-				<Copyright sx={{ mt: 5 }} />
 			</Container>
 		</ThemeProvider>
 	);
 }
 
 //Styles
+const icon = {
+	color: "#505c26",
+	background: "#EED3C0",
+	margin: 1,
+};
+
 const buttonStyles = {
 	color: "#ffffff",
 	background: "#505c26",
@@ -160,8 +149,11 @@ const buttonStyles = {
 	},
 };
 
-const icon = {
+const links = {
 	color: "#505c26",
-	background: "#EED3C0",
-	margin: 1,
+	textDecoration: "none",
+
+	"&:hover": {
+		color: "#CDA082",
+	},
 };

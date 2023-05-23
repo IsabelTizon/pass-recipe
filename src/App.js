@@ -4,6 +4,7 @@ import { BrowserRouter } from "react-router-dom"; // to navigate pages import
 import { ThemeProvider } from "@mui/material/styles";
 import { Box } from "@mui/material";
 
+// Global Styles
 import { dashboardTheme } from "./dashboardTheme";
 
 // Mui: React UI framework

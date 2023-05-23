@@ -13,9 +13,13 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 
-const defaultTheme = createTheme();
-
 export default function SignIn() {
+	const defaultTheme = createTheme({
+		palette: {
+			success: { main: "#505c26" },
+		},
+	});
+
 	const handleSubmit = (event) => {
 		event.preventDefault();
 		const data = new FormData(event.currentTarget);
@@ -70,7 +74,7 @@ export default function SignIn() {
 							autoComplete="current-password"
 						/>
 						<FormControlLabel
-							control={<Checkbox value="remember" color="primary" />}
+							control={<Checkbox value="remember" color="success" />}
 							label="Remember me"
 						/>
 						<CommonButton
@@ -83,12 +87,12 @@ export default function SignIn() {
 						</CommonButton>
 						<Grid container>
 							<Grid item xs>
-								<Link href="#" variant="body2">
+								<Link href="#" variant="body2" sx={links}>
 									Forgot password?
 								</Link>
 							</Grid>
 							<Grid item>
-								<Link href="/signup" variant="body2">
+								<Link href="/signup" variant="body2" sx={links}>
 									{"Don't have an account? Sign Up"}
 								</Link>
 							</Grid>
@@ -101,6 +105,12 @@ export default function SignIn() {
 }
 
 //Styles
+const icon = {
+	color: "#505c26",
+	background: "#EED3C0",
+	margin: 1,
+};
+
 const buttonStyles = {
 	color: "#ffffff",
 	background: "#505c26",
@@ -116,8 +126,11 @@ const buttonStyles = {
 	},
 };
 
-const icon = {
+const links = {
 	color: "#505c26",
-	background: "#EED3C0",
-	margin: 1,
+	textDecoration: "none",
+
+	"&:hover": {
+		color: "#CDA082",
+	},
 };
