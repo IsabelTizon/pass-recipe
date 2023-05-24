@@ -17,15 +17,6 @@ export default function Meal({ meal }) {
 	}, [meal.id]);
 
 	return (
-		// <article>
-		// 	<h1>{meal.title}</h1>
-		// 	<img src={imageUrl} alt="recipe" />
-		// 	<ul>
-		// 		<li>Preparation time: {meal.readyInMinutes} minutes</li>
-		// 		<li>Number of servings: {meal.servings}</li>
-		// 	</ul>
-		// 	<a href={meal.sourceUrl}>Go to recipe</a>
-		// </article>
 		<>
 			<Card>
 				<Link to={"/recipe/" + meal.id}>
@@ -40,7 +31,6 @@ export default function Meal({ meal }) {
 							<p>Number of servings: {meal.servings}</p>
 						</Flex>
 					</div>
-					{/* <Gradient /> */}
 				</Link>
 			</Card>
 		</>

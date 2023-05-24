@@ -4,24 +4,23 @@ import styled from "styled-components";
 import { useParams } from "react-router-dom";
 import CommonButton from "../components/common/button";
 
-function Recipe() {
+export default function Recipe() {
 	let params = useParams();
-	const [details, setDetails] = useState({});
-	const [activeTab, setActiveTab] = useState("recipe");
 
-	useEffect(() => {
-		fetchDetails();
-	}, [params.id]);
+	const [details, setDetails] = useState([]);
+	const [activeTab, setActiveTab] = useState("recipe"); //Active Buttons
 
 	const fetchDetails = async () => {
 		const data = await fetch(
-			`https://api.spoonacular.com/recipes/${params.id}/information?apiKey=${process.env.REACT_API_KEY}`
+			`https://api.spoonacular.com/recipes/${params.name}/information?apiKey=${process.env.REACT_APP_API_KEY}`
 		);
-
-		const recipesSearched = await data.json();
-
-		setDetails(recipesSearched);
+		const detailData = await data.json();
+		setDetails(detailData);
 	};
+
+	useEffect(() => {
+		fetchDetails();
+	}, [params.name]); // function with useCallback to fix it
 
 	return (
 		<DetailWrapper>
@@ -29,7 +28,7 @@ function Recipe() {
 				<h2>{details.title}</h2>
 			</BoxTitle>
 			<Box>
-				<img src={details.image} alt={""} />
+				<img src={details.image} alt="" />
 				<Info>
 					<CommonButton
 						sx={buttonStyles}
@@ -121,9 +120,6 @@ const buttonStyles = {
 		background: "#505c26",
 	},
 };
-
 const Info = styled.div`
 	margin-left: 3rem;
 `;
-
-export default Recipe;
