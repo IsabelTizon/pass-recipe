@@ -2,15 +2,14 @@
 import HomeIcon from "@mui/icons-material/Home";
 import RestaurantMenuIcon from "@mui/icons-material/RestaurantMenu";
 import FoodBankIcon from "@mui/icons-material/FoodBank";
-// import MonitorWeightIcon from "@mui/icons-material/MonitorWeight";
-// import EmojiEventsIcon from "@mui/icons-material/EmojiEvents";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import PersonIcon from "@mui/icons-material/Person";
 import { SiCodechef } from "react-icons/si";
+// import MonitorWeightIcon from "@mui/icons-material/MonitorWeight";
+// import EmojiEventsIcon from "@mui/icons-material/EmojiEvents";
 
 import SettingsEthernetIcon from "@mui/icons-material/SettingsEthernet";
-
 import { Divider } from "@mui/material";
 
 export const MuiNavbarItems = [

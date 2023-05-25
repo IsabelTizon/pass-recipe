@@ -113,9 +113,6 @@ export default function PersistentDrawerLeft() {
 					>
 						<Menu />
 					</IconButton>
-					{/* <Typography variant="h6" noWrap component="div">
-						Persistent drawer
-					</Typography> */}
 
 					{/*Logo */}
 					<Link to={"/"}>

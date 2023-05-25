@@ -1,12 +1,6 @@
 import React from "react";
 import Button from "@mui/material/Button";
 
-// function button() {
-//   return (
-//     <div>button</div>
-//   )
-// }
-
 // export default button
 const CommonButton = ({
 	children,
