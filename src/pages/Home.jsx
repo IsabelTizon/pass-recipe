@@ -7,7 +7,10 @@ import Search from "../components/Search";
 import { motion } from "framer-motion";
 import styled from "styled-components";
 
+import supabase from "../config/supabaseClient";
+
 export default function Home() {
+	console.log(supabase);
 	return (
 		<>
 			<motion.div
