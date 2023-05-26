@@ -1,25 +1,32 @@
 import React from "react";
-//Mui Material
+//Mui Materials
+import {
+	Card,
+	CardHeader,
+	CardMedia,
+	CardContent,
+	Avatar,
+	Typography,
+	Box,
+	Button as CommonButton,
+} from "@mui/material";
 // import { styled } from "@mui/material/styles";
-import Card from "@mui/material/Card";
-import CardHeader from "@mui/material/CardHeader";
-import CardMedia from "@mui/material/CardMedia";
-import CardContent from "@mui/material/CardContent";
 // import CardActions from "@mui/material/CardActions";
 // import Collapse from "@mui/material/Collapse";
-import Avatar from "@mui/material/Avatar";
 // import IconButton from "@mui/material/IconButton";
-import Typography from "@mui/material/Typography";
+
+// Mui Colors
 import { green } from "@mui/material/colors";
+// Mui Icons
 // import FavoriteIcon from "@mui/icons-material/Favorite";
 // import ShareIcon from "@mui/icons-material/Share";
 // import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 // import MoreVertIcon from "@mui/icons-material/MoreVert";
 
-import Box from "@mui/material/Box";
 //Links
 import { storeItems } from "../components/coursesData/storeItems";
 
+// Images
 import Logo from "../img/Logo.png";
 
 // const ExpandMore = styled((props) => {
@@ -58,7 +65,7 @@ export default function Courses() {
 								// 	</IconButton>
 								// }
 								title={item.name}
-								subheader={item.price}
+								subheader="beginners"
 							/>
 							<CardMedia
 								component="img"
@@ -121,6 +128,10 @@ export default function Courses() {
 									</Typography>
 								</CardContent>
 							</Collapse> */}
+							<Box sx={shopping}>
+								<CommonButton sx={addingCart}>ADD TO CART</CommonButton>
+								<Typography>{item.price}</Typography>
+							</Box>
 						</Card>
 					))}
 				</Box>
@@ -138,6 +149,21 @@ const wrapCourses = {
 	display: "flex",
 	flexWrap: "wrap",
 	gap: "5%",
+};
+
+const shopping = {
+	display: "flex",
+	flexDirection: "row",
+};
+const addingCart = {
+	color: "#ffffff",
+	background: "#505c26",
+	fontSize: "0.7rem",
+	border: "1px solid #505c26",
+	"&:hover": {
+		color: "#000000",
+		background: "#EED3C0",
+	},
 };
 
 console.log(Courses);
