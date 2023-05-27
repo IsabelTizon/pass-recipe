@@ -1,4 +1,4 @@
-import React from "react";
+// import React, { useState, useEffect } from "react";
 //Mui Materials
 import {
 	Card,
@@ -25,6 +25,7 @@ import { green } from "@mui/material/colors";
 
 //Links
 import { storeItems } from "../components/coursesData/storeItems";
+import { formatCurrency } from "../utilities/formatCurrency";
 
 // Images
 import Logo from "../img/Logo.png";
@@ -52,7 +53,7 @@ export default function Courses() {
 			<Box sx={mainCourses}>
 				<Box sx={wrapCourses}>
 					{storeItems.map((item, index) => (
-						<Card sx={{ maxWidth: 345 }}>
+						<Card key={item.id} sx={{ maxWidth: 345 }}>
 							<CardHeader
 								avatar={
 									<Avatar sx={{ bgcolor: green[800] }} aria-label="course">
@@ -128,9 +129,9 @@ export default function Courses() {
 									</Typography>
 								</CardContent>
 							</Collapse> */}
+							<Typography>{formatCurrency(item.price)}</Typography>
 							<Box sx={shopping}>
-								<CommonButton sx={addingCart}>ADD TO CART</CommonButton>
-								<Typography>{item.price}</Typography>
+								<CommonButton sx={addingCartButton}>ADD TO CART</CommonButton>
 							</Box>
 						</Card>
 					))}
@@ -155,7 +156,8 @@ const shopping = {
 	display: "flex",
 	flexDirection: "row",
 };
-const addingCart = {
+const addingCartButton = {
+	width: "100%",
 	color: "#ffffff",
 	background: "#505c26",
 	fontSize: "0.7rem",

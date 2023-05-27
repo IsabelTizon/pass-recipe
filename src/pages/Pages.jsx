@@ -7,6 +7,7 @@ import MealPlanning from "./mealPlanning";
 import Login from "./login";
 import SignUp from "./signup";
 import Courses from "./courses";
+import Basket from "./basket";
 import { Route, Routes, useLocation } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 
@@ -24,6 +25,7 @@ export default function Pages() {
 				<Route path="/login" element={<Login />} />
 				<Route path="/signup" element={<SignUp />} />
 				<Route path="/courses" element={<Courses />} />
+				<Route path="/basket" element={<Basket />} />
 			</Routes>
 		</AnimatePresence>
 	);

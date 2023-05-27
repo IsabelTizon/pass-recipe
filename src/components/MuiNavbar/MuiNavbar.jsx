@@ -1,13 +1,17 @@
 import * as React from "react";
+//React
+import { Link, useNavigate } from "react-router-dom";
+
+//Mui
 import { styled, useTheme } from "@mui/material/styles";
-// import Typography from "@mui/material/Typography";
+//Mui Icons
 import {
 	ChevronLeft,
 	ChevronRight,
 	Menu,
 	ShoppingCartOutlined,
 } from "@mui/icons-material";
-
+//Mui  materials
 import {
 	AppBar as MuiAppBar,
 	Badge,
@@ -23,7 +27,7 @@ import {
 	Toolbar,
 } from "@mui/material";
 
-import { Link, useNavigate } from "react-router-dom";
+//Links
 import { MuiNavbarItems } from "./MuiNavbarItems";
 
 //Logo
@@ -98,6 +102,8 @@ export default function PersistentDrawerLeft() {
 	};
 	const navigate = useNavigate();
 
+	///////////////////////////////////////////////
+
 	return (
 		<Box sx={{ isplay: "flex" }}>
 			<CssBaseline />
@@ -132,7 +138,7 @@ export default function PersistentDrawerLeft() {
 						</Link>
 
 						{/* Cart */}
-						<Link to={"/"}>
+						<Link to={"/basket"}>
 							{/* <CommonButton sx={buttonStyles} variant="close" size="medium">
 							carrito
 						</CommonButton> */}

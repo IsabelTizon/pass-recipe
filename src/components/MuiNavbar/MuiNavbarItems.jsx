@@ -55,7 +55,7 @@ export const MuiNavbarItems = [
 		id: 6,
 		icon: <AddShoppingCartIcon />,
 		label: "Shopping Card",
-		route: "shoppingcard",
+		route: "basket",
 	},
 	{
 		id: 7,
