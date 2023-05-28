@@ -1,4 +1,4 @@
-// import React, { useState, useEffect } from "react";
+// import React, { useState } from "react";
 //Mui Materials
 import {
 	Card,
@@ -24,8 +24,9 @@ import { green } from "@mui/material/colors";
 // import MoreVertIcon from "@mui/icons-material/MoreVert";
 
 //Links
-import { storeItems } from "../components/coursesData/storeItems";
+import { storeItems } from "../components/courses/storeItems";
 import { formatCurrency } from "../utilities/formatCurrency";
+import { appStore } from "../Hooks/appStore";
 
 // Images
 import Logo from "../img/Logo.png";
@@ -47,47 +48,46 @@ export default function Courses() {
 	// const handleExpandClick = () => {
 	// 	setExpanded(!expanded);
 	// };
-
+	const addProduct = appStore((state) => state.addProduct);
 	return (
-		<>
-			<Box sx={mainCourses}>
-				<Box sx={wrapCourses}>
-					{storeItems.map((item, index) => (
-						<Card key={item.id} sx={{ maxWidth: 345 }}>
-							<CardHeader
-								avatar={
-									<Avatar sx={{ bgcolor: green[800] }} aria-label="course">
-										<img src={Logo} width="40" height="30" alt="logo"></img>
-									</Avatar>
-								}
-								// action={
-								// 	<IconButton aria-label="settings">
-								// 		<MoreVertIcon />
-								// 	</IconButton>
-								// }
-								title={item.name}
-								subheader="beginners"
-							/>
-							<CardMedia
-								component="img"
-								height="194"
-								image={item.imgUrl}
-								alt="courseImage"
-							/>
+		<Box sx={mainCourses}>
+			<Box sx={wrapCourses}>
+				{storeItems.map((item, index) => (
+					<Card key={item.id} sx={{ maxWidth: 345 }}>
+						<CardHeader
+							avatar={
+								<Avatar sx={{ bgcolor: green[800] }} aria-label="course">
+									<img src={Logo} width="40" height="30" alt="logo"></img>
+								</Avatar>
+							}
+							// action={
+							// 	<IconButton aria-label="settings">
+							// 		<MoreVertIcon />
+							// 	</IconButton>
+							// }
+							title={item.name}
+							subheader="beginners"
+						/>
+						<CardMedia
+							component="img"
+							height="194"
+							image={item.imgUrl}
+							alt="courseImage"
+						/>
 
-							<CardContent>
-								<Typography variant="body2" color="text.secondary">
-									{item.cardContent}
-								</Typography>
-							</CardContent>
-							{/* <CardActions disableSpacing>
+						<CardContent>
+							<Typography variant="body2" color="text.secondary">
+								{item.cardContent}
+							</Typography>
+						</CardContent>
+						{/* <CardActions disableSpacing>
 								<IconButton aria-label="add to favorites">
 									<FavoriteIcon />
 								</IconButton>
 								<IconButton aria-label="share">
 									<ShareIcon />
 								</IconButton> */}
-							{/* <ExpandMore
+						{/* <ExpandMore
 									expand={expanded}
 									onClick={handleExpandClick}
 									aria-expanded={expanded}
@@ -95,8 +95,8 @@ export default function Courses() {
 								>
 									<ExpandMoreIcon />
 								</ExpandMore> */}
-							{/* </CardActions> */}
-							{/* <Collapse in={expanded} timeout="auto" unmountOnExit>
+						{/* </CardActions> */}
+						{/* <Collapse in={expanded} timeout="auto" unmountOnExit>
 								<CardContent>
 									<Typography paragraph>Method:</Typography>
 									<Typography paragraph>
@@ -129,15 +129,17 @@ export default function Courses() {
 									</Typography>
 								</CardContent>
 							</Collapse> */}
-							<Typography>{formatCurrency(item.price)}</Typography>
-							<Box sx={shopping}>
-								<CommonButton sx={addingCartButton}>ADD TO CART</CommonButton>
-							</Box>
-						</Card>
-					))}
-				</Box>
+						<Typography>{formatCurrency(item.price)}</Typography>
+						<Box sx={shopping}>
+							<CommonButton onClick={addProduct} sx={addingCartButton}>
+								ADD TO CART
+							</CommonButton>
+							{/* <AddProduct /> */}
+						</Box>
+					</Card>
+				))}
 			</Box>
-		</>
+		</Box>
 	);
 }
 
@@ -156,6 +158,7 @@ const shopping = {
 	display: "flex",
 	flexDirection: "row",
 };
+
 const addingCartButton = {
 	width: "100%",
 	color: "#ffffff",
@@ -167,5 +170,3 @@ const addingCartButton = {
 		background: "#EED3C0",
 	},
 };
-
-console.log(Courses);

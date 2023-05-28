@@ -14,21 +14,23 @@ import {
 //Mui  materials
 import {
 	AppBar as MuiAppBar,
-	Badge,
 	Box,
+	IconButton,
 	CssBaseline,
 	Divider,
 	Drawer,
-	IconButton,
 	List,
 	ListItem,
 	ListItemIcon,
 	ListItemText,
 	Toolbar,
+	Badge,
 } from "@mui/material";
 
 //Links
 import { MuiNavbarItems } from "./MuiNavbarItems";
+// import { CounterProducts } from "../../Hooks/counterProducts";
+import { appStore } from "../../Hooks/appStore";
 
 //Logo
 // import styled from "styled-components";
@@ -102,8 +104,7 @@ export default function PersistentDrawerLeft() {
 	};
 	const navigate = useNavigate();
 
-	///////////////////////////////////////////////
-
+	const counterProducts = appStore((state) => state.counterProducts);
 	return (
 		<Box sx={{ isplay: "flex" }}>
 			<CssBaseline />
@@ -143,9 +144,8 @@ export default function PersistentDrawerLeft() {
 							carrito
 						</CommonButton> */}
 							{/* <ShoppingCartIcon>size="medium"</ShoppingCartIcon> */}
-
 							<IconButton size="medium">
-								<Badge badgeContent={4} max={999} color="error">
+								<Badge badgeContent={counterProducts} max={999} color="error">
 									<ShoppingCartOutlined fontSize="medium" />
 								</Badge>
 							</IconButton>
