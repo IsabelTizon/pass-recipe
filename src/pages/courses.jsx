@@ -26,7 +26,7 @@ import { green } from "@mui/material/colors";
 //Links
 import { storeItems } from "../components/courses/storeItems";
 import { formatCurrency } from "../utilities/formatCurrency";
-import { appStore } from "../Hooks/appStore";
+import { useAppStore } from "../Hooks/appStore";
 
 // Images
 import Logo from "../img/Logo.png";
@@ -48,12 +48,16 @@ export default function Courses() {
 	// const handleExpandClick = () => {
 	// 	setExpanded(!expanded);
 	// };
-	const addProduct = appStore((state) => state.addProduct);
+	const addProduct = useAppStore((state) => state.addProduct);
+
 	return (
 		<Box sx={mainCourses}>
+			<Box sx={flex}>
+				<Typography sx={title}>Pass Recipe Courses</Typography>
+			</Box>
 			<Box sx={wrapCourses}>
 				{storeItems.map((item, index) => (
-					<Card key={item.id} sx={{ maxWidth: 345 }}>
+					<Card key={item.id} sx={{ maxWidth: 345, mb: 5 }}>
 						<CardHeader
 							avatar={
 								<Avatar sx={{ bgcolor: green[800] }} aria-label="course">
@@ -65,8 +69,14 @@ export default function Courses() {
 							// 		<MoreVertIcon />
 							// 	</IconButton>
 							// }
-							title={item.name}
-							subheader="beginners"
+
+							title={<Typography sx={titleCart}>{item.name}</Typography>}
+							subheader={
+								<Box sx={subheaderCart}>
+									<Typography>Beginners</Typography>
+									<Typography>{formatCurrency(item.price)}</Typography>
+								</Box>
+							}
 						/>
 						<CardMedia
 							component="img"
@@ -129,7 +139,6 @@ export default function Courses() {
 									</Typography>
 								</CardContent>
 							</Collapse> */}
-						<Typography>{formatCurrency(item.price)}</Typography>
 						<Box sx={shopping}>
 							<CommonButton onClick={addProduct} sx={addingCartButton}>
 								ADD TO CART
@@ -148,17 +157,33 @@ const mainCourses = {
 	width: "80%",
 	margin: "5% auto",
 };
+const flex = {
+	display: "flex",
+	justifyContent: "center",
+	marginBottom: "2rem",
+};
+const title = {
+	color: "#505c26",
+	fontSize: "2rem",
+};
 const wrapCourses = {
 	display: "flex",
 	flexWrap: "wrap",
-	gap: "5%",
+	gap: "4%",
 };
 
 const shopping = {
 	display: "flex",
 	flexDirection: "row",
 };
-
+const titleCart = {
+	fontSize: "1.3rem",
+};
+const subheaderCart = {
+	display: "flex",
+	flexDirection: "row",
+	justifyContent: "space-between",
+};
 const addingCartButton = {
 	width: "100%",
 	color: "#ffffff",
