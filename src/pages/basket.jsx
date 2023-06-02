@@ -16,6 +16,7 @@ import DeleteOutlinedIcon from "@mui/icons-material/DeleteOutlined";
 
 export default function Basket() {
 	const myItems = appStore((state) => state.myItems);
+	const deleteBtn = appStore((state) => state.deleteBtn);
 
 	if (myItems.length !== 0) {
 		return (
@@ -40,11 +41,23 @@ export default function Basket() {
 
 								<Box sx={boxBottom}>
 									<Box sx={containerQuantity}>
-										<CommomButton sx={btnQuantity}>-</CommomButton>
-										<Typography>Total</Typography>
+										{/* DECREASE */}
+										<CommomButton
+											sx={btnQuantity}
+											// onClick={() => decreaseBtn(item)}
+										>
+											-
+										</CommomButton>
+
+										{/* Quantity */}
+										<Typography>2</Typography>
+
+										{/* INCREASE */}
 										<CommomButton sx={btnQuantity}>+</CommomButton>
 									</Box>
-									<Box sx={deleate}>
+
+									{/* DELEATE */}
+									<Box sx={deleteStyles} onClick={() => deleteBtn(item)}>
 										<DeleteOutlinedIcon fontSize="large" color="#505c26" />
 									</Box>
 								</Box>
@@ -99,7 +112,9 @@ const btnQuantity = {
 	},
 };
 const containerQuantity = {};
-const deleate = {};
+const deleteStyles = {
+	color: "#505c26",
+};
 const buttonStyles = {
 	color: "#505c26",
 	fontSize: "0.7rem",
