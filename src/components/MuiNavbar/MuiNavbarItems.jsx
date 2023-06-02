@@ -25,13 +25,13 @@ export const MuiNavbarItems = [
 		label: "Meal Plans",
 		route: "mealPlanning",
 	},
+	<Divider />,
 	{
 		id: 2,
 		icon: <SettingsEthernetIcon />,
 		label: "Blog",
 		route: "blog",
 	},
-	<Divider />,
 	{
 		id: 3,
 		icon: <RestaurantMenuIcon />,
@@ -44,19 +44,20 @@ export const MuiNavbarItems = [
 		label: "Favorites",
 		route: "favorites",
 	},
+	<Divider />,
 	{
 		id: 5,
 		icon: <SiCodechef />,
 		label: "Courses",
 		route: "courses",
 	},
-	<Divider />,
 	{
 		id: 6,
 		icon: <AddShoppingCartIcon />,
 		label: "Shopping Card",
 		route: "basket",
 	},
+	<Divider />,
 	{
 		id: 7,
 		icon: <PersonIcon />,

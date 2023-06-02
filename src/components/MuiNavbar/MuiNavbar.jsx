@@ -29,8 +29,7 @@ import {
 
 //Links
 import { MuiNavbarItems } from "./MuiNavbarItems";
-// import { CounterProducts } from "../../Hooks/counterProducts";
-import { appStore } from "../../Hooks/appStore";
+import { appStore } from "../../store/appStore";
 
 //Logo
 // import styled from "styled-components";
@@ -93,18 +92,16 @@ const DrawerHeader = styled("div")(({ theme }) => ({
 export default function PersistentDrawerLeft() {
 	const theme = useTheme();
 	const [open, setOpen] = React.useState(false);
+	const totalItems = appStore((state) => state.myItems.length);
 
 	// Drawer
-	const handleDrawerOpen = () => {
-		setOpen(true);
-	};
+	const handleDrawerOpen = () => setOpen(true);
 
 	const handleDrawerClose = () => {
 		setOpen(false);
 	};
 	const navigate = useNavigate();
 
-	const counterProducts = appStore((state) => state.counterProducts);
 	return (
 		<Box sx={{ isplay: "flex" }}>
 			<CssBaseline />
@@ -145,7 +142,7 @@ export default function PersistentDrawerLeft() {
 						</CommonButton> */}
 							{/* <ShoppingCartIcon>size="medium"</ShoppingCartIcon> */}
 							<IconButton size="medium">
-								<Badge badgeContent={counterProducts} max={999} color="error">
+								<Badge badgeContent={totalItems} max={999} color="error">
 									<ShoppingCartOutlined fontSize="medium" />
 								</Badge>
 							</IconButton>

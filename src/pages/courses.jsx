@@ -26,7 +26,7 @@ import { green } from "@mui/material/colors";
 //Links
 import { storeItems } from "../components/courses/storeItems";
 import { formatCurrency } from "../utilities/formatCurrency";
-import { useAppStore } from "../Hooks/appStore";
+import { appStore } from "../store/appStore";
 
 // Images
 import Logo from "../img/Logo.png";
@@ -48,7 +48,7 @@ export default function Courses() {
 	// const handleExpandClick = () => {
 	// 	setExpanded(!expanded);
 	// };
-	const addProduct = useAppStore((state) => state.addProduct);
+	const addProduct = appStore((state) => state.addProduct);
 
 	return (
 		<Box sx={mainCourses}>
@@ -56,7 +56,7 @@ export default function Courses() {
 				<Typography sx={title}>Pass Recipe Courses</Typography>
 			</Box>
 			<Box sx={wrapCourses}>
-				{storeItems.map((item, index) => (
+				{storeItems.map((item) => (
 					<Card key={item.id} sx={{ maxWidth: 345, mb: 5 }}>
 						<CardHeader
 							avatar={
@@ -140,7 +140,10 @@ export default function Courses() {
 								</CardContent>
 							</Collapse> */}
 						<Box sx={shopping}>
-							<CommonButton onClick={addProduct} sx={addingCartButton}>
+							<CommonButton
+								onClick={() => addProduct(item)}
+								sx={addingCartButton}
+							>
 								ADD TO CART
 							</CommonButton>
 							{/* <AddProduct /> */}

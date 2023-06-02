@@ -5,6 +5,7 @@ import { BrowserRouter } from "react-router-dom"; // to navigate pages import
 
 // Mui: React UI framework
 import MuiNavbar from "./components/MuiNavbar/MuiNavbar";
+import MuiFooter from "./components/MuiFooter";
 
 //Mui
 import { ThemeProvider } from "@mui/material/styles";
@@ -26,9 +27,9 @@ export default function App() {
 			<BrowserRouter>
 				{/* <Box as="main" sx={{ width: "80%", margin: "0 auto" }}> */}
 				<Box as="main">
-					{/* <Products /> */}
 					<MuiNavbar />
 					<Pages />
+					<MuiFooter />
 				</Box>
 			</BrowserRouter>
 		</div>

@@ -51,6 +51,17 @@ function Veggie() {
 						pagination: false,
 						drag: "free",
 						gap: "3rem",
+						breakpoints: {
+							1200: {
+								perPage: 3,
+							},
+							900: {
+								perPage: 1,
+							},
+							600: {
+								perPage: 1,
+							},
+						},
 					}}
 				>
 					{veggie.map((recipe) => {
