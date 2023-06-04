@@ -1,38 +1,76 @@
 import * as React from "react";
-import Avatar from "@mui/material/Avatar";
-import CommonButton from "@mui/material/Button";
-import CssBaseline from "@mui/material/CssBaseline";
-import TextField from "@mui/material/TextField";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import Checkbox from "@mui/material/Checkbox";
-import Link from "@mui/material/Link";
-import Grid from "@mui/material/Grid";
-import Box from "@mui/material/Box";
+// import { useNavigate } from "react-router-dom";
+
+// Supabase
+import supabase from "../config/supabaseClient";
+// import { Auth, ThemeSupa } from "@supabase/auth-ui-react";
+
+//Mui materials
+import {
+	Avatar,
+	Button as CommonButton,
+	CssBaseline,
+	TextField,
+	FormControlLabel,
+	Checkbox,
+	Link,
+	Grid,
+	Box,
+	Typography,
+	Container,
+} from "@mui/material";
+
+// Mui icons
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
-import Typography from "@mui/material/Typography";
-import Container from "@mui/material/Container";
+
+//Mui styles
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 
+// ----------------------------------------------------------------------
+
 export default function SignIn() {
+	// const navigate = useNavigate();
+
+	// Theme
 	const defaultTheme = createTheme({
 		palette: {
 			success: { main: "#505c26" },
 		},
 	});
 
-	const handleSubmit = (event) => {
+	console.log("my supabase", supabase);
+
+	const handleSubmit = async (event) => {
 		event.preventDefault();
-		const data = new FormData(event.currentTarget);
+		const credentials = new FormData(event.currentTarget);
+
+		const email = credentials.get("email");
+		const password = credentials.get("password");
+
+		const { data } = await supabase.auth.signInWithPassword({
+			email,
+			password,
+		});
+
+		console.log("data", data);
+
 		console.log({
 			email: data.get("email"),
 			password: data.get("password"),
 		});
+
+		// if ((email === ) &&  ((email === ) ) {
+		// 	navigate("/");
+		// } else {
+		// 	navigate("/cuisine/Italian");
+		// }
 	};
 
 	return (
 		<ThemeProvider theme={defaultTheme}>
 			<Container component="main" maxWidth="xs">
 				<CssBaseline />
+				{/* <Auth supabase /> */}
 				<Box
 					sx={{
 						marginTop: 8,

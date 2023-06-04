@@ -1,4 +1,7 @@
 import React from "react";
+import { Route, Routes, useLocation } from "react-router-dom";
+import { AnimatePresence } from "framer-motion";
+// PAGES
 import Home from "./Home";
 import Cuisine from "./Cuisine";
 import Searched from "./Searched";
@@ -8,8 +11,7 @@ import Login from "./login";
 import SignUp from "./signup";
 import Courses from "./courses";
 import Basket from "./Basket";
-import { Route, Routes, useLocation } from "react-router-dom";
-import { AnimatePresence } from "framer-motion";
+import Success from "./Success";
 
 export default function Pages() {
 	const location = useLocation();
@@ -26,6 +28,7 @@ export default function Pages() {
 				<Route path="/signup" element={<SignUp />} />
 				<Route path="/courses" element={<Courses />} />
 				<Route path="/Basket" element={<Basket />} />
+				<Route path="/Success" element={<Success />} />
 			</Routes>
 		</AnimatePresence>
 	);
