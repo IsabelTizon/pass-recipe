@@ -3,6 +3,7 @@ import { GiNoodles, GiSushis, GiCheeseWedge } from "react-icons/gi";
 
 import styled from "styled-components";
 import { NavLink } from "react-router-dom"; // a= NavLink: react links
+import { devices } from "../Theme";
 
 function Category() {
 	return (
@@ -39,22 +40,28 @@ function Category() {
 
 const List = styled.div`
 	display: flex;
+	flex-wrap: wrap;
 	justify-content: center;
 	margin: 2rem 0;
 `;
 
 const SLink = styled(NavLink)`
+	//Mobile
+	margin-right: 0;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
 	border-radius: 50%;
-	margin-right: 2rem;
 	text-decoration: none;
 	background: linear-gradient(to right, #515d26, #505c26);
 	width: 4.5rem;
 	height: 4.5rem;
 	transform: scale(0.8);
+	//Tablet
+	@media ${devices.tablet} {
+		margin-right: 2rem;
+	}
 
 	h5 {
 		color: #ffffff;

@@ -2,13 +2,16 @@ import React from "react";
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { useParams } from "react-router-dom";
-import CommonButton from "../components/common/button";
+import { Button, Box } from "@mui/material";
+// import useMediaQuery from "@mui/material/useMediaQuery";
+import { devices } from "../Theme";
 
 export default function Recipe() {
 	let params = useParams();
+	// const matches = useMediaQuery("(min-width:360px)");
 
 	const [details, setDetails] = useState([]);
-	const [activeTab, setActiveTab] = useState("recipe"); //Active Buttons
+	const [activeTab, setActiveTab] = useState("Recipe"); //Active Buttons
 
 	const fetchDetails = async () => {
 		const data = await fetch(
@@ -24,13 +27,19 @@ export default function Recipe() {
 
 	return (
 		<DetailWrapper>
-			<BoxTitle>
+			<Box sx={boxTitle}>
 				<h2>{details.title}</h2>
-			</BoxTitle>
-			<Box>
-				<img src={details.image} alt="" />
-				<Info>
-					<CommonButton
+			</Box>
+			<Box sx={boxStyles}>
+				<img
+					style={{
+						minWidth: 300,
+					}}
+					src={details.image}
+					alt="imageRecipe"
+				/>
+				<section>
+					<Button
 						sx={buttonStyles}
 						// variant="authentification"
 						size="small"
@@ -38,8 +47,8 @@ export default function Recipe() {
 						onClick={() => setActiveTab("Recipe")}
 					>
 						Recipe
-					</CommonButton>
-					<CommonButton
+					</Button>
+					<Button
 						sx={buttonStyles}
 						// variant="authentification"
 						size="small"
@@ -47,50 +56,62 @@ export default function Recipe() {
 						onClick={() => setActiveTab("Ingredients")}
 					>
 						Ingredients
-					</CommonButton>
+					</Button>
 
-					{/* */}
-					{activeTab === "Recipe" && (
+					{activeTab === "Recipe" ? (
 						<div>
-							<h4 dangerouslySetInnerHTML={{ __html: details.summary }}></h4>
-							<h4 dangerouslySetInnerHTML={{ __html: details.recipe }}></h4>
+							<h3 dangerouslySetInnerHTML={{ __html: details.summary }}></h3>
+							<h3 dangerouslySetInnerHTML={{ __html: details.recipe }}></h3>
 						</div>
-					)}
-					{/* */}
-					{activeTab === "Ingredients" && (
+					) : null}
+
+					{activeTab === "Ingredients" ? (
 						<ul>
 							{details.extendedIngredients.map((ingredient) => (
 								<li key={ingredient.id}>{ingredient.original}</li>
 							))}
 						</ul>
-					)}
-				</Info>
+					) : null}
+				</section>
 			</Box>
 		</DetailWrapper>
 	);
 }
 
 //STYLES
+const boxStyles = {
+	display: "flex",
+	flexWrap: "wrap",
+};
 
-const BoxTitle = styled.div`
-	width: 100%;
-	display: flex;
-	flex-direction: row;
-	justify-content: center;
-	text-align: center;
-`;
-
-const Box = styled.div`
-	display: flex;
-	flex-direction: row;
-`;
 const DetailWrapper = styled.div`
+	width: 80%;
+	margin: 10% auto;
 	margin-top: 6rem;
 	margin-bottom: 5rem;
+
 	.active {
 		background: linear-gradient(to right, #515d26, #505c26);
 
 		color: #ffffff;
+	}
+	div {
+		//Mobile
+		margin: 0;
+		display: flex;
+		//Tablet
+		@media ${devices.tablet} {
+			margin: 0;
+		}
+	}
+	section {
+		margin-left: 0;
+		width: 90%;
+		//desktop
+		@media ${devices.desktop} {
+			margin-left: 30px;
+			width: 40%;
+		}
 	}
 
 	h2 {
@@ -101,15 +122,36 @@ const DetailWrapper = styled.div`
 		line-height: 2rem;
 	}
 	ul {
+		//Mobile
 		margin-top: 2rem;
+		//Tablet
+		@media ${devices.tablet} {
+			padding-left: 25px;
+		}
 	}
+
 	h4 {
 		margin-top: 2rem;
 	}
 	img {
+		//Mobile
+		width: 90%;
+		margin: 0;
 		border-radius: 10px;
+		@media ${devices.desktop} {
+			width: 50%;
+			margin: 0;
+		}
 	}
 `;
+
+const boxTitle = {
+	width: "100%",
+	display: "flex",
+	flexDirection: "row",
+	justifyContent: "center",
+	textAlign: "center",
+};
 
 const buttonStyles = {
 	margin: "0.3rem",
@@ -120,6 +162,3 @@ const buttonStyles = {
 		background: "#505c26",
 	},
 };
-const Info = styled.div`
-	margin-left: 3rem;
-`;

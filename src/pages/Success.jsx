@@ -1,7 +1,7 @@
 import React from "react";
-import { Link } from "react-router-dom";
+
 //Mui materials
-import { Button as CommonButton, Typography, Container } from "@mui/material";
+import { Typography, Container } from "@mui/material";
 
 export default function Success() {
 	return (
@@ -12,9 +12,10 @@ export default function Success() {
 				Your recipe app where you can find recipes and share your recipes with
 				the rest of the pass recipe community
 			</Typography>
-			<Link to={"/"}>
-				<CommonButton sx={buttonStyles}>Let's go!</CommonButton>
-			</Link>
+			<Typography sx={confirmation}>
+				Check your email for the confirmation!
+			</Typography>
+			<Typography sx={login}>then login</Typography>
 		</Container>
 	);
 }
@@ -46,18 +47,11 @@ const intro = {
 	fontSize: "1rem",
 	textAlign: "center",
 };
-
-const buttonStyles = {
-	color: "#ffffff",
-	background: "#505c26",
-	marginTop: 3,
-	marginBottom: 2,
-	minWidth: "100%",
-
-	fontSize: "0.7rem",
-	border: "1px solid #505c26",
-	"&:hover": {
-		color: "#505c26",
-		background: "#EED3C0",
-	},
+const confirmation = {
+	color: "#dc0b0b",
+	textAlign: "center",
+};
+const login = {
+	color: "#000000",
+	textAlign: "center",
 };

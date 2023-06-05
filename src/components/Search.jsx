@@ -2,10 +2,12 @@ import styled from "styled-components";
 import { useState } from "react";
 import { FaSearch } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
+import { devices } from "../Theme";
 
 function Search() {
 	const [input, setInput] = useState("");
 	const navigate = useNavigate();
+	console.log("devices", devices);
 
 	const submitHandler = (e) => {
 		e.preventDefault();
@@ -28,19 +30,22 @@ function Search() {
 }
 
 const FormStyle = styled.form`
-	margin: 0 8rem;
+	//Mobile
+	margin: 0;
+	//Tablet
+	@media ${devices.tablet} {
+		margin: 0 8rem;
+	}
 	div {
 		width: 100%;
 		height: 2rem;
 		border-radius: 1rem;
 		position: relative;
-		/* border-color: 1px solid #a62323; */
 		background: linear-gradient(#494949, #313131);
 	}
 
 	input {
 		border: 1px solid #505c26;
-		/* background: linear-gradient(#494949, #313131); */
 		background-color: #ffffff;
 		font-size: 1rem;
 		color: #000000;

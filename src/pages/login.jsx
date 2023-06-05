@@ -1,5 +1,5 @@
 import * as React from "react";
-// import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 // Supabase
 import supabase from "../config/supabaseClient";
@@ -27,43 +27,46 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 
 // ----------------------------------------------------------------------
+// Theme
+const defaultTheme = createTheme({
+	palette: {
+		success: { main: "#505c26" },
+	},
+});
 
 export default function SignIn() {
-	// const navigate = useNavigate();
+	// console.log("my supabase", supabase);
+	const navigate = useNavigate();
 
-	// Theme
-	const defaultTheme = createTheme({
-		palette: {
-			success: { main: "#505c26" },
-		},
-	});
+	// Btn signin
+	const handleSubmit = async (e) => {
+		e.preventDefault();
 
-	console.log("my supabase", supabase);
+		try {
+			const credentials = new FormData(e.currentTarget);
 
-	const handleSubmit = async (event) => {
-		event.preventDefault();
-		const credentials = new FormData(event.currentTarget);
+			const email = credentials.get("email");
+			const password = credentials.get("password");
 
-		const email = credentials.get("email");
-		const password = credentials.get("password");
+			const { data, error } = await supabase.auth.signInWithPassword({
+				email,
+				password,
+			});
 
-		const { data } = await supabase.auth.signInWithPassword({
-			email,
-			password,
-		});
+			//Conditional
+			if (error) {
+				throw error;
+			}
 
-		console.log("data", data);
+			console.log("data", data);
 
-		console.log({
-			email: data.get("email"),
-			password: data.get("password"),
-		});
+			console.log("User sigin successfully:", data.user);
 
-		// if ((email === ) &&  ((email === ) ) {
-		// 	navigate("/");
-		// } else {
-		// 	navigate("/cuisine/Italian");
-		// }
+			// redirect to Home
+			navigate("/");
+		} catch (error) {
+			console.error("Error signing in:", error.message);
+		}
 	};
 
 	return (

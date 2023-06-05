@@ -94,13 +94,10 @@ const Wrapper = styled.div`
 `;
 //card style
 const Card = styled.div`
-	min-height: 15rem;
+	/* min-height: 15rem; */
 	border-radius: 2rem;
 	overflow: hidden;
 	position: relative;
-	display: flex;
-	align-items: center;
-	justify-content: center;
 	background-color: #505c26;
 
 	img {

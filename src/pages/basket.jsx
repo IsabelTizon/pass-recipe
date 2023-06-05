@@ -69,8 +69,8 @@ export default function Basket() {
 		);
 	} else {
 		return (
-			<Box>
-				<Typography>Your basket is empty</Typography>
+			<Box sx={containerCartEmpty}>
+				<Typography sx={headerEmptyBasket}>Your basket is empty</Typography>
 				<Link to="/courses">
 					<CommomButton sx={buttonStyles}>Go to Courses</CommomButton>
 				</Link>
@@ -80,6 +80,17 @@ export default function Basket() {
 }
 
 //STYLES
+const containerCartEmpty = {
+	width: "35%",
+	margin: "10% auto",
+};
+const headerEmptyBasket = {
+	color: "#505c26",
+	marginTop: 3,
+	marginBottom: 2,
+	fontSize: "2.5rem",
+	textAlign: "center",
+};
 const containerBasket = {
 	width: "50%",
 	margin: "10% auto",
@@ -90,6 +101,9 @@ const cardCourse = {
 	backgroundColor: "#EED3C0",
 	marginBottom: "5%",
 	borderRadius: "20px",
+};
+const titleCart = {
+	fontWeight: 700,
 };
 const boxRight = {
 	display: "flex",
@@ -116,14 +130,16 @@ const deleteStyles = {
 	color: "#505c26",
 };
 const buttonStyles = {
-	color: "#505c26",
+	color: "#ffffff",
+	background: "#505c26",
+	marginTop: 3,
+	marginBottom: 2,
+	minWidth: "100%",
+
 	fontSize: "0.7rem",
 	border: "1px solid #505c26",
 	"&:hover": {
-		color: "#000000",
+		color: "#505c26",
 		background: "#EED3C0",
 	},
-};
-const titleCart = {
-	fontSize: "1.3rem",
 };

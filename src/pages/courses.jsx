@@ -36,7 +36,7 @@ export default function Courses() {
 
 	return (
 		<Box sx={mainCourses}>
-			<Box sx={flex}>
+			<Box sx={containerTitle}>
 				<Typography sx={title}>Pass Recipe Courses</Typography>
 			</Box>
 			<Box sx={wrapCourses}>
@@ -75,11 +75,8 @@ export default function Courses() {
 							</Typography>
 						</CardContent>
 
-						<Box sx={shopping}>
-							<CommonButton
-								onClick={() => addProduct(item)}
-								sx={addingCartButton}
-							>
+						<Box sx={shoppingBtnContainer}>
+							<CommonButton onClick={() => addProduct(item)} sx={addingCartBtn}>
 								ADD TO CART
 							</CommonButton>
 						</Box>
@@ -91,11 +88,13 @@ export default function Courses() {
 }
 
 //Styles
+// Main
 const mainCourses = {
 	width: "80%",
 	margin: "5% auto",
 };
-const flex = {
+//Title Page
+const containerTitle = {
 	display: "flex",
 	justifyContent: "center",
 	marginBottom: "2rem",
@@ -104,15 +103,11 @@ const title = {
 	color: "#505c26",
 	fontSize: "2rem",
 };
+//Courses wrap
 const wrapCourses = {
 	display: "flex",
 	flexWrap: "wrap",
 	gap: "4%",
-};
-
-const shopping = {
-	display: "flex",
-	flexDirection: "row",
 };
 const titleCart = {
 	fontSize: "1.3rem",
@@ -122,7 +117,12 @@ const subheaderCart = {
 	flexDirection: "row",
 	justifyContent: "space-between",
 };
-const addingCartButton = {
+const shoppingBtnContainer = {
+	display: "flex",
+	flexDirection: "row",
+};
+
+const addingCartBtn = {
 	width: "100%",
 	color: "#ffffff",
 	background: "#505c26",

@@ -174,7 +174,11 @@ export default function PersistentDrawerLeft() {
 				<Divider />
 				<List>
 					{MuiNavbarItems.map((item, index) => (
-						<ListItem key={item.id} onClick={() => navigate(item.route)}>
+						<ListItem
+							key={item.id}
+							sx={navbarStyles.listItem}
+							onClick={() => navigate(item.route)}
+						>
 							<ListItemIcon sx={navbarStyles.icons}>{item.icon}</ListItemIcon>
 							<ListItemText sx={navbarStyles.text} primary={item.label} />
 						</ListItem>
@@ -203,6 +207,10 @@ const navbarStyles = {
 	// 		color: "red",
 	// 	},
 	// },
+	listItem: {
+		cursor: "pointer",
+	},
+
 	icons: {
 		color: "#5e5d5d",
 		marginLeft: "20px",
@@ -217,6 +225,7 @@ const navbarStyles = {
 
 		"&:hover": {
 			color: "#024e19",
+			fontWeight: "900",
 		},
 		// "& span": {
 		// 	marginLeft: "-10px",

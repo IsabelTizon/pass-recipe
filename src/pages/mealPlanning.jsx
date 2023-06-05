@@ -5,6 +5,7 @@ import CommonButton from "../components/common/button";
 
 import MealList from "../components/MealList";
 import hero from "../img/meal-plan.jpg";
+import { devices } from "../Theme";
 
 export default function MealPlanning() {
 	const [mealData, setMealData] = useState(null);
@@ -30,7 +31,7 @@ export default function MealPlanning() {
 					<h4>
 						Choose your daily plan based in the calories you want to ingest
 					</h4>
-					<div>
+					<form>
 						<input
 							onChange={(e) => setCalories(e.target.value)}
 							type="number"
@@ -39,7 +40,7 @@ export default function MealPlanning() {
 						<CommonButton sx={buttonStyles} size="small" onClick={getMealData}>
 							Get
 						</CommonButton>
-					</div>
+					</form>
 				</Plan>
 				{mealData && <MealList mealData={mealData} />}
 			</Hero>
@@ -56,6 +57,7 @@ const Hero = styled.div`
 	}
 `;
 const Plan = styled.form`
+	//Mobile
 	padding: 3%;
 	text-align: center;
 	background-color: rgba(224, 224, 224, 0.5);
@@ -69,13 +71,15 @@ const Plan = styled.form`
 	display: flex;
 	flex-direction: column;
 
-	/* div {
-		width: 30%;
-		height: 2rem;
-		border-radius: 1rem;
-		position: relative;
-		background: linear-gradient(#494949, #313131);
-	} */
+	width: 80%;
+	//Tablet
+	@media ${devices.tablet} {
+		width: 70%;
+	}
+	@media ${devices.desktop} {
+		width: 45%;
+	}
+
 	h1 {
 		color: #515c26;
 		margin-bottom: 3%;
@@ -84,7 +88,7 @@ const Plan = styled.form`
 		color: #000000;
 		margin-bottom: 10%;
 	}
-	div {
+	form {
 		display: flex;
 		flex-direction: row;
 		justify-content: center;

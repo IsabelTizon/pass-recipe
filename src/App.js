@@ -12,7 +12,7 @@ import { ThemeProvider } from "@mui/material/styles";
 import { Box } from "@mui/material";
 
 // Global Styles
-import { dashboardTheme } from "./dashboardTheme";
+import { theme } from "./Theme";
 
 //Links
 // import { Products } from "./Hooks/counterProducts";
@@ -24,15 +24,16 @@ export default function App() {
 
 	return (
 		<div className="App">
-			<ThemeProvider theme={dashboardTheme}></ThemeProvider>
-			<BrowserRouter>
-				{/* <Box as="main" sx={{ width: "80%", margin: "0 auto" }}> */}
-				<Box as="main">
-					<MuiNavbar />
-					<Pages />
-					<MuiFooter />
-				</Box>
-			</BrowserRouter>
+			<ThemeProvider theme={theme}>
+				<BrowserRouter>
+					{/* <Box as="main" sx={{ width: "80%", margin: "0 auto" }}> */}
+					<Box as="main">
+						<MuiNavbar />
+						<Pages />
+						<MuiFooter />
+					</Box>
+				</BrowserRouter>
+			</ThemeProvider>
 		</div>
 	);
 }
