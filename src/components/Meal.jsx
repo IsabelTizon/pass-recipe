@@ -28,8 +28,12 @@ export default function Meal({ meal }) {
 						<h4>{meal.title}</h4>
 						<Flex>
 							{/*return title img */}
-							<p>Preparation time: {meal.readyInMinutes} minutes</p>
-							<p>Number of servings: {meal.servings}</p>
+							<p>
+								<strong>Preparation time:</strong> {meal.readyInMinutes} minutes
+							</p>
+							<p>
+								<strong>Number of servings:</strong> {meal.servings}
+							</p>
 						</Flex>
 					</div>
 				</Link>
