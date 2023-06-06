@@ -40,6 +40,7 @@ const Flex = styled.div`
 	h1 {
 		margin-top: 20px;
 		margin-bottom: 20px;
+		color: #515c26;
 	}
 `;
 const Macros = styled.div`
