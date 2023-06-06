@@ -36,13 +36,13 @@ export const MuiNavbarItems = [
 		id: 3,
 		icon: <RestaurantMenuIcon />,
 		label: "My Recipes",
-		route: "recipes",
+		route: "MyRecipes",
 	},
 	{
 		id: 4,
 		icon: <FavoriteIcon />,
-		label: "Favorites",
-		route: "favorites",
+		label: "Favourites",
+		route: "Favourites",
 	},
 	<Divider />,
 	{

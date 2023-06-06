@@ -10,8 +10,11 @@ import MealPlanning from "./mealPlanning";
 import Login from "./login";
 import SignUp from "./signup";
 import Courses from "./courses";
-import Basket from "./Basket";
+import Basket from "./basket";
 import Success from "./Success";
+import Blog from "./Blog";
+import Favourites from "./Favourites";
+import MyRecipes from "./MyRecipes";
 
 export default function Pages() {
 	const location = useLocation();
@@ -29,6 +32,9 @@ export default function Pages() {
 				<Route path="/courses" element={<Courses />} />
 				<Route path="/Basket" element={<Basket />} />
 				<Route path="/Success" element={<Success />} />
+				<Route path="/Blog" element={<Blog />} />
+				<Route path="/Favourites" element={<Favourites />} />
+				<Route path="/MyRecipes" element={<MyRecipes />} />
 			</Routes>
 		</AnimatePresence>
 	);
