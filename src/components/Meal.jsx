@@ -2,6 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { devices } from "../Theme";
 
 export default function Meal({ meal }) {
 	const [imageUrl, setImageUrl] = useState("");
@@ -42,7 +43,12 @@ const Card = styled.div`
 	border-radius: 2rem;
 	overflow: hidden;
 	border: 1px solid #718135;
-	width: 30%;
+	width: 100%;
+
+	//Desktop
+	@media ${devices.desktop} {
+		width: 30%;
+	}
 
 	img.imageMealCard {
 		border-radius: 2rem 2rem 0 0;
@@ -50,17 +56,20 @@ const Card = styled.div`
 		object-fit: cover;
 	}
 	div {
-		padding: 5px;
+		padding: 0 10px 10px 10px;
 	}
 	h4 {
 		font-size: 1rem;
-		font-weight: 600;
-		text-decoration: none;
+		font-weight: bolder;
+		padding: 10px 10px 0 10px;
+		color: #56622d;
 	}
 	p {
 		color: #000000;
 		padding-top: 0.5rem;
 		font-size: 0.8rem;
+	}
+	a {
 		text-decoration: none;
 	}
 `;

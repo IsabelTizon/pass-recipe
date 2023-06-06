@@ -60,8 +60,8 @@ export default function Recipe() {
 
 					{activeTab === "Recipe" ? (
 						<div>
-							<h3 dangerouslySetInnerHTML={{ __html: details.summary }}></h3>
-							<h3 dangerouslySetInnerHTML={{ __html: details.recipe }}></h3>
+							<h4 dangerouslySetInnerHTML={{ __html: details.summary }}></h4>
+							<h4 dangerouslySetInnerHTML={{ __html: details.recipe }}></h4>
 						</div>
 					) : null}
 
@@ -137,6 +137,7 @@ const DetailWrapper = styled.div`
 		//Mobile
 		width: 90%;
 		margin: 0;
+		height: 450px;
 		border-radius: 10px;
 		@media ${devices.desktop} {
 			width: 50%;

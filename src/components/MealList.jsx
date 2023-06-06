@@ -1,6 +1,7 @@
 import React from "react";
 import Meal from "../components/Meal";
 import styled from "styled-components";
+import { devices } from "../Theme";
 
 export default function MealList({ mealData }) {
 	const nutrients = mealData.nutrients;
@@ -49,12 +50,16 @@ const Macros = styled.div`
 	margin-bottom: 40px;
 `;
 const Meals = styled.div`
-	width: 60%;
-	margin: 0 auto;
-
+	margin: 0 auto 10%;
+	width: 90%;
 	display: flex;
 	flex-wrap: wrap;
 	gap: 2rem;
+
+	//Desktop
+	@media ${devices.desktop} {
+		width: 60%;
+	}
 `;
 
 const List = styled.div`
