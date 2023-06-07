@@ -40,7 +40,11 @@ export default function Basket() {
 					return (
 						<CardCourse key={item.id}>
 							<BoxLeft>
-								<img src={item.imgUrl} alt={item.name} style={imageStyle} />
+								<img
+									src={process.env.PUBLIC_URL + item.imgUrl}
+									alt={item.name}
+									style={imageStyle}
+								/>
 							</BoxLeft>
 							<BoxRight>
 								<Box>
