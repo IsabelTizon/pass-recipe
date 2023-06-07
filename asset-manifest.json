@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/pass-recipe/static/css/main.1c132362.css",
+    "main.js": "/pass-recipe/static/js/main.b82d5145.js",
+    "static/media/meal-plan.jpg": "/pass-recipe/static/media/meal-plan.2e2ba76078ae2ce10a60.jpg",
+    "index.html": "/pass-recipe/index.html",
+    "main.1c132362.css.map": "/pass-recipe/static/css/main.1c132362.css.map",
+    "main.b82d5145.js.map": "/pass-recipe/static/js/main.b82d5145.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.1c132362.css",
+    "static/js/main.b82d5145.js"
+  ]
+}
