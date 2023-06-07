@@ -62,6 +62,7 @@ export const MuiNavbarItems = [
 		id: 7,
 		icon: <PersonIcon />,
 		label: "Register",
+		// label: {user ? user.email : "Register"},
 		route: "login",
 	},
 ];

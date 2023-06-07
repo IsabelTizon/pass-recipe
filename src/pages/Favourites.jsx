@@ -1,24 +1,32 @@
 import React from "react";
 
 //Mui materials
-import { Typography, Container } from "@mui/material";
+import { Typography } from "@mui/material";
+
+// Mui Styles
+import { styled } from "@mui/material/styles";
 
 export default function Favourites() {
 	return (
-		<Container sx={containerFavourites}>
+		<ContainerSuccess>
 			<Typography sx={header}>
 				My Favourites recipes of Pass Recipes Community
 			</Typography>
-			<Typography sx={subheader}>Sorry, Page in progress</Typography>
-		</Container>
+			<Typography sx={subheader}>Under Construction</Typography>
+		</ContainerSuccess>
 	);
 }
 
 // STYLES
-const containerFavourites = {
-	width: "80%",
-	margin: "10% auto",
-};
+const ContainerSuccess = styled("div")(({ theme }) => ({
+	[theme.breakpoints.up("mobile")]: {
+		width: "80%",
+		margin: "10% auto",
+	},
+	[theme.breakpoints.up("desktop")]: {
+		width: "35%",
+	},
+}));
 const header = {
 	color: "#505c26",
 	marginTop: 3,

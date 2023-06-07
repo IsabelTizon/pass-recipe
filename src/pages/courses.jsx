@@ -31,68 +31,82 @@ import { appStore } from "../store/appStore";
 // Images
 import Logo from "../img/Logo.png";
 
+// Mui Styles
+import { styled } from "@mui/material/styles";
+
 export default function Courses() {
 	const addProduct = appStore((state) => state.addProduct);
 
 	return (
-		<Box sx={mainCourses}>
-			<Box sx={containerTitle}>
-				<Typography sx={title}>Pass Recipe Courses</Typography>
-			</Box>
-			<Box sx={wrapCourses}>
-				{storeItems.map((item) => (
-					<Card key={item.id} sx={{ maxWidth: 345, mb: 5 }}>
-						<CardHeader
-							avatar={
-								<Avatar sx={{ bgcolor: green[800] }} aria-label="course">
-									<img src={Logo} width="40" height="30" alt="logo"></img>
-								</Avatar>
-							}
-							// action={
-							// 	<IconButton aria-label="settings">
-							// 		<MoreVertIcon />
-							// 	</IconButton>
-							// }
+		<>
+			<MainCourses>
+				<Box sx={containerTitle}>
+					<Typography sx={title}>Pass Recipe Courses</Typography>
+				</Box>
+				<Box sx={wrapCourses}>
+					{storeItems.map((item) => (
+						<Card key={item.id} sx={{ maxWidth: 345, mb: 5 }}>
+							<CardHeader
+								avatar={
+									<Avatar sx={{ bgcolor: green[800] }} aria-label="course">
+										<img src={Logo} width="40" height="30" alt="logo"></img>
+									</Avatar>
+								}
+								// action={
+								// 	<IconButton aria-label="settings">
+								// 		<MoreVertIcon />
+								// 	</IconButton>
+								// }
 
-							title={<Typography sx={titleCart}>{item.name}</Typography>}
-							subheader={
-								<Box sx={subheaderCart}>
-									<Typography>Beginners</Typography>
-									<Typography>{formatCurrency(item.price)}</Typography>
-								</Box>
-							}
-						/>
-						<CardMedia
-							component="img"
-							height="194"
-							image={item.imgUrl}
-							alt="courseImage"
-						/>
+								title={<Typography sx={titleCart}>{item.name}</Typography>}
+								subheader={
+									<Box sx={subheaderCart}>
+										<Typography>Beginners</Typography>
+										<Typography>{formatCurrency(item.price)}</Typography>
+									</Box>
+								}
+							/>
+							<CardMedia
+								component="img"
+								height="194"
+								image={item.imgUrl}
+								alt="courseImage"
+							/>
 
-						<CardContent>
-							<Typography variant="body2" color="text.secondary">
-								{item.cardContent}
-							</Typography>
-						</CardContent>
+							<CardContent>
+								<Typography variant="body2" color="text.secondary">
+									{item.cardContent}
+								</Typography>
+							</CardContent>
 
-						<Box sx={shoppingBtnContainer}>
-							<CommonButton onClick={() => addProduct(item)} sx={addingCartBtn}>
-								ADD TO CART
-							</CommonButton>
-						</Box>
-					</Card>
-				))}
-			</Box>
-		</Box>
+							<Box sx={shoppingBtnContainer}>
+								<CommonButton
+									onClick={() => addProduct(item)}
+									sx={addingCartBtn}
+								>
+									ADD TO CART
+								</CommonButton>
+							</Box>
+						</Card>
+					))}
+				</Box>
+			</MainCourses>
+		</>
 	);
 }
 
 //Styles
 // Main
-const mainCourses = {
-	width: "80%",
-	margin: "5% auto",
-};
+const MainCourses = styled("div")(({ theme }) => ({
+	[theme.breakpoints.up("mobile")]: {
+		width: "90%",
+		margin: "5% auto",
+	},
+	[theme.breakpoints.up("desktop")]: {
+		width: "80%",
+	},
+}));
+
 //Title Page
 const containerTitle = {
 	display: "flex",

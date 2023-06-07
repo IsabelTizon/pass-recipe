@@ -1,25 +1,33 @@
 import React from "react";
 
 //Mui materials
-import { Typography, Container } from "@mui/material";
+import { Typography } from "@mui/material";
+
+// Mui Styles
+import { styled } from "@mui/material/styles";
 
 export default function Blog() {
 	return (
-		<Container sx={containerBlog}>
+		<ContainerSuccess>
 			<Typography sx={header}>Blog</Typography>
 			<Typography sx={subheader}>
 				We are a big communnity that share our recipes
 			</Typography>
-			<Typography sx={subheader}>Sorry, Page in progress</Typography>
-		</Container>
+			<Typography sx={subheader}>Under Construction</Typography>
+		</ContainerSuccess>
 	);
 }
 
 // STYLES
-const containerBlog = {
-	width: "80%",
-	margin: "10% auto",
-};
+const ContainerSuccess = styled("div")(({ theme }) => ({
+	[theme.breakpoints.up("mobile")]: {
+		width: "80%",
+		margin: "10% auto",
+	},
+	[theme.breakpoints.up("desktop")]: {
+		width: "35%",
+	},
+}));
 const header = {
 	color: "#505c26",
 	marginTop: 3,

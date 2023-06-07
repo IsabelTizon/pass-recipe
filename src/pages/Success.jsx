@@ -1,11 +1,14 @@
 import React from "react";
 
 //Mui materials
-import { Typography, Container } from "@mui/material";
+import { Typography } from "@mui/material";
+
+// Mui Styles
+import { styled } from "@mui/material/styles";
 
 export default function Success() {
 	return (
-		<Container sx={containerSuccess}>
+		<ContainerSuccess>
 			<Typography sx={header}>Success!</Typography>
 			<Typography sx={subheader}>Welcome to Pass Recipe</Typography>
 			<Typography sx={intro}>
@@ -16,15 +19,21 @@ export default function Success() {
 				Check your email for the confirmation!
 			</Typography>
 			<Typography sx={login}>then login</Typography>
-		</Container>
+		</ContainerSuccess>
 	);
 }
 
 // STYLES
-const containerSuccess = {
-	width: "35%",
-	margin: "10% auto",
-};
+const ContainerSuccess = styled("div")(({ theme }) => ({
+	[theme.breakpoints.up("mobile")]: {
+		width: "80%",
+		margin: "10% auto",
+	},
+	[theme.breakpoints.up("desktop")]: {
+		width: "35%",
+	},
+}));
+
 const header = {
 	color: "#505c26",
 	marginTop: 3,

@@ -11,8 +11,8 @@ import {
 	Button as CommonButton,
 	CssBaseline,
 	TextField,
-	FormControlLabel,
-	Checkbox,
+	// FormControlLabel,
+	// Checkbox,
 	Link,
 	Grid,
 	Box,
@@ -26,6 +26,8 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 //Mui styles
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 
+//Links
+import { authStore } from "../store/authStore";
 // ----------------------------------------------------------------------
 // Theme
 const defaultTheme = createTheme({
@@ -37,6 +39,7 @@ const defaultTheme = createTheme({
 export default function SignIn() {
 	// console.log("my supabase", supabase);
 	const navigate = useNavigate();
+	const loginUser = authStore((state) => state.loginUser);
 
 	// Btn signin
 	const handleSubmit = async (e) => {
@@ -59,7 +62,7 @@ export default function SignIn() {
 			}
 
 			console.log("data", data);
-
+			loginUser(data);
 			console.log("User sigin successfully:", data.user);
 
 			// redirect to Home
@@ -73,7 +76,6 @@ export default function SignIn() {
 		<ThemeProvider theme={defaultTheme}>
 			<Container component="main" maxWidth="xs">
 				<CssBaseline />
-				{/* <Auth supabase /> */}
 				<Box
 					sx={{
 						marginTop: 8,
@@ -114,10 +116,10 @@ export default function SignIn() {
 							id="password"
 							autoComplete="current-password"
 						/>
-						<FormControlLabel
+						{/* <FormControlLabel
 							control={<Checkbox value="remember" color="success" />}
 							label="Remember me"
-						/>
+						/> */}
 						<CommonButton
 							type="submit"
 							fullWidth
@@ -127,11 +129,11 @@ export default function SignIn() {
 							Sign In
 						</CommonButton>
 						<Grid container>
-							<Grid item xs>
+							{/* <Grid item xs>
 								<Link href="#" variant="body2" sx={links}>
 									Forgot password?
 								</Link>
-							</Grid>
+							</Grid> */}
 							<Grid item>
 								<Link href="/signup" variant="body2" sx={links}>
 									{"Don't have an account? Sign Up"}

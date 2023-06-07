@@ -32,7 +32,7 @@ const defaultTheme = createTheme({
 
 export default function SignUp() {
 	const navigate = useNavigate();
-	const [user, setUser] = useState(null);
+	// const [user, setUser] = useState(null);
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
@@ -57,7 +57,7 @@ export default function SignUp() {
 				throw error;
 			}
 			console.log("User signed up successfully:", data.user);
-			setUser(data.user);
+			// setUser(data.user);
 			// Verification email to the user email
 			navigate("/Success");
 			await supabase.auth.api.sendVerificationEmail(email, {
