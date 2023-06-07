@@ -62,6 +62,8 @@ export default function SignIn() {
 			}
 
 			console.log("data", data);
+
+			//Calling authStore f()
 			loginUser(data);
 			console.log("User sigin successfully:", data.user);
 
