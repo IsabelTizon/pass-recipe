@@ -69,7 +69,7 @@ export default function Courses() {
 							<CardMedia
 								component="img"
 								height="194"
-								image={item.imgUrl}
+								image={process.env.PUBLIC_URL + item.imgUrl}
 								alt="courseImage"
 							/>
 
