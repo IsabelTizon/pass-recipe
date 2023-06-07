@@ -11,7 +11,7 @@ function Searched() {
 	let params = useParams();
 
 	const getSearched = async (name) => {
-		const check = localStorage.getItem("searchedRecipes");
+		const check = localStorage.getItem("searchedRecipes") || false;
 
 		if (check) {
 			setSearchedRecipes(JSON.parse(check));
@@ -21,6 +21,10 @@ function Searched() {
 			);
 
 			const recipes = await data.json();
+			console.log(
+				"🚀 ~ file: Searched.jsx:24 ~ getSearched ~ recipes:",
+				recipes
+			);
 
 			localStorage.setItem("searched", JSON.stringify(recipes.results));
 

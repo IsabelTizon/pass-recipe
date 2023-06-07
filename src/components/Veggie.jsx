@@ -3,9 +3,9 @@ import styled from "styled-components"; // atatached the style to my function co
 //Splide: the carousel
 //SplideSlide: It's gonna be each individual image or card
 import { Splide, SplideSlide } from "@splidejs/react-splide";
+import { Link } from "react-router-dom";
 //
 import "@splidejs/splide/dist/css/splide.min.css";
-import { Link } from "react-router-dom";
 
 function Veggie() {
 	const [veggie, setVeggie] = useState([]);
@@ -17,7 +17,7 @@ function Veggie() {
 
 	const getVeggie = async () => {
 		// Storing our fetch in our localStorage for don't fetch over and over again and don't loose my maximun of request per day in spoonaculary API
-		const check = localStorage.getItem("veggie"); // get in the item
+		const check = localStorage.getItem("veggie") || false; // get in the item
 
 		if (check) {
 			// If there is an item in localStorage, set it and don't do the fetching again
@@ -25,14 +25,14 @@ function Veggie() {
 		} else {
 			const api = await fetch(
 				// 'await' expressions are only allowed within async functions to wait to process the code before pop in in the next line
-				`https://api.spoonacular.com/recipes/random?apiKey=${process.env.REACT_API_KEY}&number=9&tags=vegetarian`
+				`https://api.spoonacular.com/recipes/random?apiKey=${process.env.REACT_APP_API_KEY}&number=9&tags=vegetarian`
 			);
 			const data = await api.json();
+			console.log("🚀 ~ file: Veggie.jsx:31 ~ getVeggie ~ data:", data);
 
 			localStorage.setItem("veggie", JSON.stringify(data.recipes)); // Saving the array like a string
 			// console.log(data);
 			setVeggie(data.recipes);
-
 			console.log(data.recipes);
 		}
 	};

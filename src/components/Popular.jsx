@@ -18,7 +18,7 @@ function Popular() {
 	const getPopular = async () => {
 		// Storing our fetch in our localStorage for don't fetch over and over again and don't loose my maximun of request per day in spoonaculary API
 
-		const check = localStorage.getItem("popular"); // get in the item
+		const check = localStorage.getItem("popular") || false; // get in the item
 
 		if (check) {
 			// If there is an item in localStorage, set it and don't do the fetching again
@@ -30,6 +30,7 @@ function Popular() {
 				`https://api.spoonacular.com/recipes/random?apiKey=${process.env.REACT_APP_API_KEY}&number=9`
 			);
 			const data = await api.json();
+			console.log("🚀 ~ file: Popular.jsx:33 ~ getPopular ~ data:", data);
 
 			localStorage.setItem("popular", JSON.stringify(data.recipes)); // Saving the array like a string
 			// console.log(data);
