@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import styled from "styled-components"; // atatached the style to my function componets
+
 //Splide: the carousel
 //SplideSlide: It's gonna be each individual image or card
 import { Splide, SplideSlide } from "@splidejs/react-splide";
@@ -7,7 +7,11 @@ import { Link } from "react-router-dom";
 //
 import "@splidejs/splide/dist/css/splide.min.css";
 
-function Popular() {
+//@query
+import styled from "styled-components";
+import { devices } from "../Theme";
+
+export default function Popular() {
 	const [popular, setPopular] = useState([]);
 	// when the page load
 	useEffect(() => {
@@ -41,7 +45,7 @@ function Popular() {
 
 	// return Popular
 	return (
-		<div>
+		<>
 			<Wrapper>
 				<h3> Popular Picks</h3>
 				{/*Splide: carousel*/}
@@ -88,45 +92,53 @@ function Popular() {
 					})}
 				</Splide>
 			</Wrapper>
-		</div>
+		</>
 	);
 }
 
 //CSS
 //Wrapper cards
 const Wrapper = styled.div`
-	margin: 4rem 0rem;
+	margin: 0;
 `;
 //card style
 const Card = styled.div`
-	min-height: 18rem;
+	display: flex;
+	flex-direction: column;
+	height: 300px;
 	border-radius: 2rem;
-	overflow: hidden;
 	border: 1px solid #718135;
+	margin-bottom: 15%;
+
+	@media ${devices.desktop} {
+		height: 250px;
+		width: 85%;
+	}
 
 	img {
 		border-radius: 2rem 2rem 0 0;
 		width: 100%;
-		object-fit: cover;
+		height: 100%;
 	}
 
 	p {
 		position: absolute;
 		z-index: 10;
 		color: #000000;
-		width: 90%;
-		padding-top: 1.5rem;
+		width: 85%;
+		margin: 3% auto;
 		font-weight: 600;
 		font-size: 0.8rem;
+
+		@media ${devices.tablet} {
+			font-size: 1rem;
+		}
+		@media ${devices.desktop} {
+			width: 80%;
+			font-size: 0.8rem;
+		}
 	}
 `;
-// const Gradient = styled.div`
-// 	z-index: 3;
-// 	position: absolute;
-// 	width: 100%;
-// 	height: 100%;
-// 	background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5));
-// `;
 
 const Box = styled.div`
 	width: 100%;
@@ -135,4 +147,3 @@ const Box = styled.div`
 	justify-content: center;
 	text-align: center;
 `;
-export default Popular;

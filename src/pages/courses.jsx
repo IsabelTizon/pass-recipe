@@ -1,7 +1,7 @@
 // import React, { useState } from "react";
+
 //Mui Materials
 import {
-	Card,
 	CardHeader,
 	CardMedia,
 	CardContent,
@@ -45,7 +45,7 @@ export default function Courses() {
 				</Box>
 				<Box sx={wrapCourses}>
 					{storeItems.map((item) => (
-						<Card key={item.id} sx={{ maxWidth: 345, mb: 5 }}>
+						<CardCourse key={item.id} sx={{ maxWidth: 345, mb: 5 }}>
 							<CardHeader
 								avatar={
 									<Avatar sx={{ bgcolor: green[800] }} aria-label="course">
@@ -87,7 +87,7 @@ export default function Courses() {
 									ADD TO CART
 								</CommonButton>
 							</Box>
-						</Card>
+						</CardCourse>
 					))}
 				</Box>
 			</MainCourses>
@@ -106,7 +106,20 @@ const MainCourses = styled("div")(({ theme }) => ({
 		width: "80%",
 	},
 }));
-
+//card
+const CardCourse = styled("div")(({ theme }) => ({
+	[theme.breakpoints.up("mobile")]: {
+		width: "100%",
+		borderRadius: "10px",
+		border: "1px solid #505c26",
+	},
+	[theme.breakpoints.up("tablet")]: {
+		width: "50%",
+	},
+	[theme.breakpoints.up("desktop")]: {
+		width: "30%",
+	},
+}));
 //Title Page
 const containerTitle = {
 	display: "flex",
@@ -137,7 +150,8 @@ const shoppingBtnContainer = {
 };
 
 const addingCartBtn = {
-	width: "100%",
+	width: "95%",
+	margin: "10px auto",
 	color: "#ffffff",
 	background: "#505c26",
 	fontSize: "0.7rem",

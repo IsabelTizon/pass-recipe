@@ -1,10 +1,13 @@
 import React from "react";
-import styled from "styled-components";
 import { motion } from "framer-motion";
 import { Link, useParams } from "react-router-dom"; //useParams: to put the keyword in the URL
 import { useEffect, useState } from "react";
 import Category from "../components/Category";
 import Search from "../components/Search";
+
+//Styles & @query
+import styled from "styled-components";
+import { devices } from "../Theme";
 
 function Cuisine() {
 	const [cuisine, setCuisine] = useState([]);
@@ -54,14 +57,27 @@ const Flex = styled.div`
 	display: flex;
 	flex-direction: column;
 
-	width: 80%;
-	margin: 0 auto;
-	padding-top: 5%;
+	width: 90%;
+	margin: 5% auto;
+
+	@media ${devices.desktop} {
+		width: 60%;
+		margin: 3% auto;
+	}
 `;
 const Grid = styled(motion.div)`
 	display: grid;
 	grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
 	grid-gap: 3rem;
+	margin-top: 5%;
+	margin-bottom: 15%;
+	@media ${devices.tablet} {
+		margin-bottom: 10%;
+	}
+	@media ${devices.desktop} {
+		margin-top: 2%;
+		margin-bottom: 0;
+	}
 `;
 const Card = styled.div`
 	img {

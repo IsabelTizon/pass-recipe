@@ -1,4 +1,4 @@
-import { useState } from "react";
+// import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 // Supabase
@@ -138,6 +138,7 @@ export default function SignUp() {
 						</Grid>
 						<CommonButton
 							type="submit"
+							aria-label="Sign up button"
 							fullWidth
 							variant="contained"
 							sx={buttonStyles}
@@ -149,7 +150,12 @@ export default function SignUp() {
 								{/* {user ? (
 									<Typography>Check your email for the confirmation</Typography>
 								) : null} */}
-								<Link href="/login" variant="body2" sx={links}>
+								<Link
+									href="/login"
+									aria-label="Link to sign in"
+									variant="body2"
+									sx={links}
+								>
 									Already have an account? Sign in
 								</Link>
 							</Grid>

@@ -136,12 +136,12 @@ export default function PersistentDrawerLeft() {
 						</Link>
 
 						{/* Cart */}
-						<Link to={"/basket"}>
+						<Link to={"/basket"} aria-label="link to basket">
 							{/* <CommonButton sx={buttonStyles} variant="close" size="medium">
 							carrito
 						</CommonButton> */}
 							{/* <ShoppingCartIcon>size="medium"</ShoppingCartIcon> */}
-							<IconButton size="medium">
+							<IconButton size="medium" aria-label="icon basket">
 								<Badge badgeContent={totalItems} max={999} color="error">
 									<ShoppingCartOutlined fontSize="medium" />
 								</Badge>

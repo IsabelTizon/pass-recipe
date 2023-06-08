@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import styled from "styled-components"; // atatached the style to my function componets
 //Splide: the carousel
 //SplideSlide: It's gonna be each individual image or card
 import { Splide, SplideSlide } from "@splidejs/react-splide";
@@ -7,7 +6,11 @@ import { Link } from "react-router-dom";
 //
 import "@splidejs/splide/dist/css/splide.min.css";
 
-function Veggie() {
+//@query
+import styled from "styled-components";
+import { devices } from "../Theme";
+
+export default function Veggie() {
 	const [veggie, setVeggie] = useState([]);
 	// when the page load
 	useEffect(() => {
@@ -94,8 +97,9 @@ const Wrapper = styled.div`
 `;
 //card style
 const Card = styled.div`
-	/* min-height: 15rem; */
+	min-height: 15rem;
 	border-radius: 2rem;
+	border: 2px solid #718135;
 	overflow: hidden;
 	position: relative;
 	background-color: #505c26;
@@ -109,23 +113,18 @@ const Card = styled.div`
 	}
 	p {
 		color: white;
-		width: 100%;
+		width: 80%;
+		margin: 2% auto;
 		text-align: center;
 		font-size: 1rem;
 		background: linear-gradient((to right, #324001, #232d02));
-		padding: 0.8rem;
 		display: -webkit-box;
 		-webkit-line-clamp: 1;
 		-webkit-box-orient: vertical;
 		overflow: hidden;
+
+		@media ${devices.desktop} {
+			width: 80%;
+		}
 	}
 `;
-// const Gradient = styled.div`
-// 	z-index: 3;
-// 	position: absolute;
-// 	width: 100%;
-// 	height: 100%;
-// 	background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5));
-// `;
-
-export default Veggie;

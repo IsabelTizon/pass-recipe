@@ -15,10 +15,12 @@ export default function MealList({ mealData }) {
 			<Macros>
 				<List>
 					{/* toFixed: rounded number, no decimal */}
-					<li>Calories: {nutrients.calories.toFixed(0)}</li>
-					<li>Carbohydrates: {nutrients.carbohydrates.toFixed(0)}</li>
-					<li>Fat: {nutrients.fat.toFixed(0)}</li>
-					<li>Protein: {nutrients.protein.toFixed(0)}</li>
+					<ListItem>Calories: {nutrients.calories.toFixed(0)}</ListItem>
+					<ListItem>
+						Carbohydrates: {nutrients.carbohydrates.toFixed(0)}
+					</ListItem>
+					<ListItem>Fat: {nutrients.fat.toFixed(0)}</ListItem>
+					<ListItem>Protein: {nutrients.protein.toFixed(0)}</ListItem>
 				</List>
 			</Macros>
 			<Meals>
@@ -71,3 +73,4 @@ const List = styled.div`
 	margin: 0 auto;
 	list-style-type: none;
 `;
+const ListItem = styled.div``;

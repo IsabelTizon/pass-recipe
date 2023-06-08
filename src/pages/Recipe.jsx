@@ -39,25 +39,26 @@ export default function Recipe() {
 					alt="imageRecipe"
 				/>
 				<section>
-					<Button
-						sx={buttonStyles}
-						// variant="authentification"
-						size="small"
-						className={activeTab === "Recipe" ? "active" : ""}
-						onClick={() => setActiveTab("Recipe")}
-					>
-						Recipe
-					</Button>
-					<Button
-						sx={buttonStyles}
-						// variant="authentification"
-						size="small"
-						className={activeTab === "Ingredients" ? "active" : ""}
-						onClick={() => setActiveTab("Ingredients")}
-					>
-						Ingredients
-					</Button>
-
+					<BoxBtns>
+						<Button
+							sx={buttonStyles}
+							// variant="authentification"
+							size="small"
+							className={activeTab === "Recipe" ? "active" : ""}
+							onClick={() => setActiveTab("Recipe")}
+						>
+							Recipe
+						</Button>
+						<Button
+							sx={buttonStyles}
+							// variant="authentification"
+							size="medium"
+							className={activeTab === "Ingredients" ? "active" : ""}
+							onClick={() => setActiveTab("Ingredients")}
+						>
+							Ingredients
+						</Button>
+					</BoxBtns>
 					{activeTab === "Recipe" ? (
 						<div>
 							<h4 dangerouslySetInnerHTML={{ __html: details.summary }}></h4>
@@ -85,10 +86,16 @@ const boxStyles = {
 };
 
 const DetailWrapper = styled.div`
-	width: 80%;
-	margin: 10% auto;
-	margin-top: 6rem;
-	margin-bottom: 5rem;
+	@media ${devices.mobile} {
+		width: 90%;
+		margin: 4rem auto 5rem;
+	}
+	@media ${devices.tablet} {
+		width: 80%;
+	}
+	@media ${devices.desktop} {
+		width: 70%;
+	}
 
 	.active {
 		background: linear-gradient(to right, #515d26, #505c26);
@@ -96,21 +103,19 @@ const DetailWrapper = styled.div`
 		color: #ffffff;
 	}
 	div {
-		//Mobile
 		margin: 0;
 		display: flex;
-		//Tablet
-		@media ${devices.tablet} {
-			margin: 0;
-		}
 	}
 	section {
-		margin-left: 0;
-		width: 90%;
-		//desktop
+		@media ${devices.mobile} {
+			width: 100%;
+			margin-left: 0;
+			display: flex;
+			flex-direction: column;
+		}
 		@media ${devices.desktop} {
-			margin-left: 30px;
-			width: 40%;
+			width: 47%;
+			margin-left: 3%;
 		}
 	}
 
@@ -124,7 +129,7 @@ const DetailWrapper = styled.div`
 	ul {
 		//Mobile
 		margin-top: 2rem;
-		//Tablet
+		padding-left: 20px;
 		@media ${devices.tablet} {
 			padding-left: 25px;
 		}
@@ -134,18 +139,31 @@ const DetailWrapper = styled.div`
 		margin-top: 2rem;
 	}
 	img {
-		//Mobile
-		width: 90%;
-		margin: 0;
-		height: 450px;
-		border-radius: 10px;
+		@media ${devices.mobile} {
+			width: 100%;
+			margin: 0;
+			border-radius: 10px;
+		}
+
+		@media ${devices.tablet} {
+			width: 100%;
+		}
+
 		@media ${devices.desktop} {
 			width: 50%;
-			margin: 0;
+			height: 75%;
 		}
 	}
 `;
-
+const BoxBtns = styled.div`
+	@media ${devices.mobile} {
+		display: flex;
+		flex-direction: column;
+	}
+	@media ${devices.tablet} {
+		flex-direction: row;
+	}
+`;
 const boxTitle = {
 	width: "100%",
 	display: "flex",

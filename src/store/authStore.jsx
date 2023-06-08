@@ -2,10 +2,11 @@ import { create } from "zustand";
 
 export const authStore = create((set) => ({
 	user: {},
-	sessionToken: null,
+	// access_token: null,
 
 	loginUser: (session) =>
 		set((state) => ({
 			user: session.user,
+			// access_token: session.access_token,
 		})),
 }));

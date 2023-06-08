@@ -10,28 +10,16 @@ import { appStore } from "../store/appStore";
 //Mui icons
 import DeleteOutlinedIcon from "@mui/icons-material/DeleteOutlined";
 
-//Mui Theme
-// import { Theme } from "../Theme";
+//@query
+import styled from "styled-components";
+import { devices } from "../Theme";
 
 // Mui Styles
-import { styled } from "@mui/material/styles";
+import { styled as styles } from "@mui/material/styles";
 
 export default function Basket() {
 	const myItems = appStore((state) => state.myItems);
 	const deleteBtn = appStore((state) => state.deleteBtn);
-	const imageStyle = {
-		width: "100%",
-		height: "100%",
-		"@media (max-width: 360px)": {
-			borderRadius: "20px 20px 0 0",
-		},
-		"@media (max-width: 768px)": {
-			borderRadius: "20px 20px 0 0",
-		},
-		"@media (max-width: 1920px)": {
-			borderRadius: "20px 0 0 20px",
-		},
-	};
 
 	if (myItems.length !== 0) {
 		return (
@@ -40,11 +28,12 @@ export default function Basket() {
 					return (
 						<CardCourse key={item.id}>
 							<BoxLeft>
-								<img
-									src={process.env.PUBLIC_URL + item.imgUrl}
-									alt={item.name}
-									style={imageStyle}
-								/>
+								<ImageCourse>
+									<img
+										src={process.env.PUBLIC_URL + item.imgUrl}
+										alt={item.name}
+									/>
+								</ImageCourse>
 							</BoxLeft>
 							<BoxRight>
 								<Box>
@@ -111,7 +100,7 @@ const headerEmptyBasket = {
 	textAlign: "center",
 };
 //Basket with items styles
-const ContainerBasket = styled("div")(({ theme }) => ({
+const ContainerBasket = styles("div")(({ theme }) => ({
 	[theme.breakpoints.up("mobile")]: {
 		width: "90%",
 		margin: "10% auto",
@@ -121,7 +110,7 @@ const ContainerBasket = styled("div")(({ theme }) => ({
 	},
 }));
 
-const CardCourse = styled("div")(({ theme }) => ({
+const CardCourse = styles("div")(({ theme }) => ({
 	[theme.breakpoints.up("mobile")]: {
 		backgroundColor: "#EED3C0",
 		marginBottom: "5%",
@@ -137,46 +126,59 @@ const CardCourse = styled("div")(({ theme }) => ({
 	},
 }));
 
-const BoxLeft = styled("div")(({ theme }) => ({
+const ImageCourse = styled.div`
+	img {
+		width: 100%;
+		height: 100%;
+
+		@media ${devices.mobile} {
+			border-radius: 20px 20px 0 0;
+		}
+		@media ${devices.tablet} {
+			border-radius: 20px 20px 0 0;
+		}
+		@media ${devices.desktop} {
+			border-radius: 20px 0 0 20px;
+		}
+	}
+`;
+const BoxLeft = styles("div")(({ theme }) => ({
 	[theme.breakpoints.up("mobile")]: {},
 	[theme.breakpoints.up("desktop")]: {
 		width: "50%",
 	},
 }));
 
-const TitleCard = styled("div")(({ theme }) => ({
+const TitleCard = styles("div")(({ theme }) => ({
 	[theme.breakpoints.up("mobile")]: {
 		fontWeight: 700,
 		fontSize: "1.2rem",
 	},
-	[theme.breakpoints.up("desktop")]: {
-		fontSize: "1.5rem",
-	},
 }));
 
-const BoxRight = styled("div")(({ theme }) => ({
+const BoxRight = styles("div")(({ theme }) => ({
 	[theme.breakpoints.up("mobile")]: {
 		display: "flex",
 		flexDirection: "column",
 		padding: "30px",
 	},
 	[theme.breakpoints.up("desktop")]: {
-		padding: "40px",
+		paddigLeft: "40px",
 	},
 }));
 
-const BoxBottom = styled("div")(({ theme }) => ({
+const BoxBottom = styles("div")(({ theme }) => ({
 	[theme.breakpoints.up("mobile")]: {
 		display: "flex",
 		flexDirection: "column",
 		marginTop: "15px",
 	},
 	[theme.breakpoints.up("desktop")]: {
-		marginTop: "55px",
+		marginTop: "20px",
 	},
 }));
 
-const ContainerBtns = styled("div")(({ theme }) => ({
+const ContainerBtns = styles("div")(({ theme }) => ({
 	[theme.breakpoints.up("mobile")]: {
 		display: "flex",
 		flexDirection: "row",
@@ -192,7 +194,7 @@ const btnQuantity = {
 		background: "#505c26",
 	},
 };
-const QuantityCounter = styled("div")(({ theme }) => ({
+const QuantityCounter = styles("div")(({ theme }) => ({
 	[theme.breakpoints.up("mobile")]: {
 		width: "60px",
 		display: "flex",
@@ -205,7 +207,7 @@ const Quantity = styled("p")`
 	height: 100%;
 `;
 
-const ContainerDelete = styled("div")(({ theme }) => ({
+const ContainerDelete = styles("div")(({ theme }) => ({
 	[theme.breakpoints.up("mobile")]: {
 		display: "flex",
 		flexDirection: "row",

@@ -1,10 +1,13 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import styled from "styled-components";
 import { Box } from "@mui/material";
 import Category from "../components/Category";
 import Search from "../components/Search";
+
+//Styles & @query
+import styled from "styled-components";
+import { devices } from "../Theme";
 
 function Searched() {
 	const [searchedRecipes, setSearchedRecipes] = useState([]);
@@ -62,6 +65,15 @@ const Grid = styled.div`
 	display: grid;
 	grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
 	grid-gap: 2rem;
+	width: 90%;
+	margin: 5% auto;
+
+	@media ${devices.tablet} {
+		width: 85%;
+	}
+	@media ${devices.desktop} {
+		width: 80%;
+	}
 `;
 
 const Card = styled.div`

@@ -5,8 +5,8 @@ export default function MuiFooter() {
 	return (
 		<Paper
 			sx={{
-				marginTop: "calc(10% + 60px)",
 				width: "100%",
+				height: "45px",
 				position: "fixed",
 				bottom: 0,
 				backgroundColor: "#505c26",
@@ -21,7 +21,6 @@ export default function MuiFooter() {
 						flexGrow: 1,
 						justifyContent: "center",
 						display: "flex",
-						my: 1,
 					}}
 				></Box>
 
@@ -30,7 +29,7 @@ export default function MuiFooter() {
 						flexGrow: 1,
 						justifyContent: "center",
 						display: "flex",
-						mb: 2,
+						mt: "9px",
 					}}
 				>
 					<Typography variant="caption" color="white" sx={{ fontSize: "1rem" }}>

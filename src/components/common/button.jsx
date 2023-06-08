@@ -20,7 +20,7 @@ const CommonButton = ({
 			sx={sx}
 			className={className}
 			onClick={onClick}
-			variants
+			variants={variants ? "true" : "false"}
 		>
 			{children}
 		</Button>

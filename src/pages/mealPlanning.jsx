@@ -1,10 +1,12 @@
 import React from "react";
 import { useState } from "react";
-import styled from "styled-components";
 import CommonButton from "../components/common/button";
 
 import MealList from "../components/MealList";
 import hero from "../img/meal-plan.jpg";
+
+//Styles & @query
+import styled from "styled-components";
 import { devices } from "../Theme";
 
 export default function MealPlanning() {
@@ -37,7 +39,12 @@ export default function MealPlanning() {
 							type="number"
 							placeholder="Calories e.g. 2000"
 						/>
-						<CommonButton sx={buttonStyles} size="small" onClick={getMealData}>
+						<CommonButton
+							aria-label="Get meal"
+							sx={buttonStyles}
+							size="small"
+							onClick={getMealData}
+						>
 							Get
 						</CommonButton>
 					</form>
@@ -72,7 +79,7 @@ const Plan = styled.form`
 	flex-direction: column;
 
 	width: 80%;
-	//Tablet
+
 	@media ${devices.tablet} {
 		width: 70%;
 	}
@@ -90,8 +97,11 @@ const Plan = styled.form`
 	}
 	form {
 		display: flex;
-		flex-direction: row;
+		flex-direction: column;
 		justify-content: center;
+		@media ${devices.tablet} {
+			flex-direction: row;
+		}
 	}
 
 	input {
@@ -102,7 +112,12 @@ const Plan = styled.form`
 		padding: 0.5rem 3rem;
 		border-radius: 5px;
 		outline: none;
-		width: 70%;
+		width: 100%;
+		margin-bottom: 5%;
+		@media ${devices.tablet} {
+			width: 70%;
+			margin-bottom: 0;
+		}
 	}
 `;
 const buttonStyles = {

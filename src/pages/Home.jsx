@@ -6,6 +6,7 @@ import Search from "../components/Search";
 
 import { motion } from "framer-motion";
 import styled from "styled-components";
+import { devices } from "../Theme";
 
 import supabase from "../config/supabaseClient";
 
@@ -32,7 +33,14 @@ export default function Home() {
 
 //Styles
 const MainHome = styled.div`
-	width: 80%;
-	margin: 0 auto;
-	padding-top: 5%;
+	//Mobile
+	width: 90%;
+	margin: 5% auto 10%;
+	@media ${devices.tablet} {
+		width: 80%;
+	}
+	@media ${devices.desktop} {
+		width: 80%;
+		margin: 3% auto 5%;
+	}
 `;
