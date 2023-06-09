@@ -24,10 +24,6 @@ function Searched() {
 			);
 
 			const recipes = await data.json();
-			console.log(
-				"🚀 ~ file: Searched.jsx:24 ~ getSearched ~ recipes:",
-				recipes
-			);
 
 			localStorage.setItem("searched", JSON.stringify(recipes.results));
 
@@ -47,7 +43,7 @@ function Searched() {
 				{searchedRecipes.map((item) => {
 					return (
 						<Card key={item.id}>
-							<Link to={"/recipe/" + item.id}>
+							<Link to={"/pass-recipes/recipe/" + item.id}>
 								<img src={item.image} alt="" />
 								<Box>
 									<h4>{item.title}</h4>

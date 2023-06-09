@@ -119,13 +119,13 @@ export default function PersistentDrawerLeft() {
 					</IconButton>
 
 					{/*Logo */}
-					<Link to={"/"}>
+					<Link to={"/pass-recipes/"}>
 						<img src={Logo} width="80" height="45" alt="logo"></img>
 					</Link>
 
 					{/*Login Button */}
 					<Box>
-						<Link to={"../../login"}>
+						<Link to={"/pass-recipes/login"}>
 							<CommonButton
 								sx={buttonStyles}
 								variant="authentification"
@@ -136,7 +136,7 @@ export default function PersistentDrawerLeft() {
 						</Link>
 
 						{/* Cart */}
-						<Link to={"/basket"} aria-label="link to basket">
+						<Link to={"/pass-recipes/basket"} aria-label="link to basket">
 							{/* <CommonButton sx={buttonStyles} variant="close" size="medium">
 							carrito
 						</CommonButton> */}

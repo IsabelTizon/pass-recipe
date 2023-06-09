@@ -8,27 +8,27 @@ import { devices } from "../Theme";
 function Category() {
 	return (
 		<List>
-			<SLink to={"/cuisine/Italian"}>
+			<SLink to={"/pass-recipes/cuisine/Italian"}>
 				<FaPizzaSlice />
 				<h5>Italian</h5>
 			</SLink>
-			<SLink to={"/cuisine/American"}>
+			<SLink to={"/pass-recipes/cuisine/American"}>
 				<FaHamburger />
 				<h5>American</h5>
 			</SLink>
-			<SLink to={"/cuisine/Thai"}>
+			<SLink to={"/pass-recipes/cuisine/Thai"}>
 				<GiNoodles />
 				<h5>Thai</h5>
 			</SLink>
-			<SLink to={"/cuisine/Japanese"}>
+			<SLink to={"/pass-recipes/cuisine/Japanese"}>
 				<GiSushis />
 				<h5>Japanese</h5>
 			</SLink>
-			<SLink to={"/cuisine/French"}>
+			<SLink to={"/pass-recipes/cuisine/French"}>
 				<GiCheeseWedge />
 				<h5>Frenc</h5>
 			</SLink>
-			<SLink to={"/cuisine/Mexican"}>
+			<SLink to={"/pass-recipes/cuisine/Mexican"}>
 				<FaPepperHot />
 				<h5>Mexican</h5>
 			</SLink>

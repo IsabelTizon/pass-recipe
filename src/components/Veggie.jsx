@@ -73,7 +73,7 @@ export default function Veggie() {
 							<SplideSlide key={recipe.id}>
 								{/* each card would be a slide */}
 								<Card>
-									<Link to={"/recipe/" + recipe.id}>
+									<Link to={"/pass-recipes/recipe/" + recipe.id}>
 										{/* return img */}
 										<img src={recipe.image} alt="recipe.title" />
 										{/*return Recipe Title*/}

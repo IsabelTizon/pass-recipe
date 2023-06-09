@@ -68,7 +68,7 @@ export default function SignIn() {
 			console.log("User sigin successfully:", data.user);
 
 			// redirect to Home
-			navigate("/");
+			navigate("/pass-recipes/");
 		} catch (error) {
 			console.error("Error signing in:", error.message);
 		}
@@ -137,7 +137,7 @@ export default function SignIn() {
 								</Link>
 							</Grid> */}
 							<Grid item>
-								<Link href="/signup" variant="body2" sx={links}>
+								<Link href="/pass-recipes/signup" variant="body2" sx={links}>
 									{"Don't have an account? Sign Up"}
 								</Link>
 							</Grid>

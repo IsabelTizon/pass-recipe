@@ -34,12 +34,11 @@ export default function Popular() {
 				`https://api.spoonacular.com/recipes/random?apiKey=${process.env.REACT_APP_API_KEY}&number=9`
 			);
 			const data = await api.json();
-			console.log("🚀 ~ file: Popular.jsx:33 ~ getPopular ~ data:", data);
 
-			localStorage.setItem("popular", JSON.stringify(data.recipes)); // Saving the array like a string
+			localStorage.setItem("popular", JSON.stringify(data.popular)); // Saving the array like a string
 			// console.log(data);
-			setPopular(data.recipes);
-			console.log(data.recipes);
+			setPopular(data.popular);
+			console.log(data.popular);
 		}
 	};
 
@@ -70,19 +69,19 @@ export default function Popular() {
 						},
 					}}
 				>
-					{popular.map((recipe) => {
+					{popular.map((popular) => {
 						return (
-							//key={recipe.id}:
-							<SplideSlide key={recipe.id}>
+							//key={popular.id}:
+							<SplideSlide key={popular.id}>
 								{/*each card would be a slide*/}
 								<Card>
-									<Link to={"/recipe/" + recipe.id}>
+									<Link to={"/pass-recipes/recipe/" + popular.id}>
 										{/*return imag*/}
-										<img src={recipe.image} alt="recipe.title" />
+										<img src={popular.image} alt="popular.title" />
 										{/*return Recipe Title*/}
 										<Box>
 											{/*return title img */}
-											<p>{recipe.title}</p>
+											<p>{popular.title}</p>
 										</Box>
 										{/* <Gradient /> */}
 									</Link>

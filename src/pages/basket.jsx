@@ -78,7 +78,7 @@ export default function Basket() {
 		return (
 			<Box sx={containerCartEmpty}>
 				<Typography sx={headerEmptyBasket}>Your basket is empty</Typography>
-				<Link to="/courses">
+				<Link to="/pass-recipes/courses">
 					<CommomButton sx={buttonStyles}>Go to Courses</CommomButton>
 				</Link>
 			</Box>

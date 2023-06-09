@@ -18,23 +18,24 @@ import MyRecipes from "./MyRecipes";
 
 export default function Pages() {
 	const location = useLocation();
+	console.log("🚀 ~ file: Pages.jsx:21 ~ Pages ~ location:", location);
 
 	return (
 		<AnimatePresence mode="wait">
 			<Routes Location={location} key={location.pathname}>
-				<Route path="/" element={<Home />} />
-				<Route path="/cuisine/:type" element={<Cuisine />} />
-				<Route path="/searched/:search" element={<Searched />} />
-				<Route path="/recipe/:name" element={<Recipe />} />
-				<Route path="/mealPlanning" element={<MealPlanning />} />
-				<Route path="/login" element={<Login />} />
-				<Route path="/signup" element={<SignUp />} />
-				<Route path="/courses" element={<Courses />} />
-				<Route path="/Basket" element={<Basket />} />
-				<Route path="/Success" element={<Success />} />
-				<Route path="/Blog" element={<Blog />} />
-				<Route path="/Favourites" element={<Favourites />} />
-				<Route path="/MyRecipes" element={<MyRecipes />} />
+				<Route path="/pass-recipes/" element={<Home />} />
+				<Route path="/pass-recipes/cuisine/:type" element={<Cuisine />} />
+				<Route path="/pass-recipes/searched/:search" element={<Searched />} />
+				<Route path="/pass-recipes/recipe/:name" element={<Recipe />} />
+				<Route path="/pass-recipes/meal-planning" element={<MealPlanning />} />
+				<Route path="/pass-recipes/login" element={<Login />} />
+				<Route path="/pass-recipes/signup" element={<SignUp />} />
+				<Route path="/pass-recipes/courses" element={<Courses />} />
+				<Route path="/pass-recipes/basket" element={<Basket />} />
+				<Route path="/pass-recipes/success" element={<Success />} />
+				<Route path="/pass-recipes/blog" element={<Blog />} />
+				<Route path="/pass-recipes/favourites" element={<Favourites />} />
+				<Route path="/pass-recipes/my-recipes" element={<MyRecipes />} />
 			</Routes>
 		</AnimatePresence>
 	);

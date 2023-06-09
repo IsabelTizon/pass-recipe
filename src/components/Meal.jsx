@@ -20,7 +20,7 @@ export default function Meal({ meal }) {
 	return (
 		<>
 			<Card>
-				<Link to={"/recipe/" + meal.id}>
+				<Link to={"/pass-recipes/recipe/" + meal.id}>
 					{/*return imag*/}
 					<img className="imageMealCard" src={imageUrl} alt="recipe" />
 					{/*return Recipe Title*/}

@@ -151,7 +151,7 @@ export default function SignUp() {
 									<Typography>Check your email for the confirmation</Typography>
 								) : null} */}
 								<Link
-									href="/login"
+									href="/pass-recipes/login"
 									aria-label="Link to sign in"
 									variant="body2"
 									sx={links}
