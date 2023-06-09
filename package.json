@@ -1,6 +1,6 @@
 {
-	"homepage": "https://isabeltizon.github.io/pass-recipe",
-	"name": "pass-recipe",
+	"homepage": "https://isabeltizon.github.io/pass-recipes",
+	"name": "pass-recipes",
 	"version": "0.1.0",
 	"private": true,
 	"dependencies": {
