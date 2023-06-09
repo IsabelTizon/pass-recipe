@@ -137,7 +137,11 @@ export default function SignIn() {
 								</Link>
 							</Grid> */}
 							<Grid item>
-								<Link to="/pass-recipes/signup" variant="body2" sx={links}>
+								<Link
+									onClick={() => navigate("/pass-recipes/signup")}
+									variant="body2"
+									sx={links}
+								>
 									{"Don't have an account? Sign Up"}
 								</Link>
 							</Grid>
@@ -172,6 +176,7 @@ const buttonStyles = {
 };
 
 const links = {
+	cursor: "pointer",
 	color: "#505c26",
 	textDecoration: "none",
 

@@ -151,7 +151,7 @@ export default function SignUp() {
 									<Typography>Check your email for the confirmation</Typography>
 								) : null} */}
 								<Link
-									href="/pass-recipes/login"
+									onClick={() => navigate("/pass-recipes/login")}
 									aria-label="Link to sign in"
 									variant="body2"
 									sx={links}
@@ -190,6 +190,7 @@ const buttonStyles = {
 };
 
 const links = {
+	cursor: "pointer",
 	color: "#505c26",
 	textDecoration: "none",
 
