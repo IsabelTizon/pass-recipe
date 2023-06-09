@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/pass-recipes/static/css/main.1c132362.css",
-    "main.js": "/pass-recipes/static/js/main.d442fb54.js",
+    "main.js": "/pass-recipes/static/js/main.289f293f.js",
     "static/media/meal-plan.jpg": "/pass-recipes/static/media/meal-plan.2e2ba76078ae2ce10a60.jpg",
     "index.html": "/pass-recipes/index.html",
     "main.1c132362.css.map": "/pass-recipes/static/css/main.1c132362.css.map",
-    "main.d442fb54.js.map": "/pass-recipes/static/js/main.d442fb54.js.map"
+    "main.289f293f.js.map": "/pass-recipes/static/js/main.289f293f.js.map"
   },
   "entrypoints": [
     "static/css/main.1c132362.css",
-    "static/js/main.d442fb54.js"
+    "static/js/main.289f293f.js"
   ]
 }
