@@ -137,7 +137,7 @@ export default function SignIn() {
 								</Link>
 							</Grid> */}
 							<Grid item>
-								<Link href="/pass-recipes/signup" variant="body2" sx={links}>
+								<Link to="/pass-recipes/signup" variant="body2" sx={links}>
 									{"Don't have an account? Sign Up"}
 								</Link>
 							</Grid>
