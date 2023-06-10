@@ -14,7 +14,7 @@ export const appStore = create()(
 				const index = state.myItems.findIndex((x) => x.id === item.id);
 				const copyMyItems = [...state.myItems];
 				copyMyItems.splice(index, 1);
-				return { myItems: [...state.myItems] };
+				return { myItems: copyMyItems };
 			});
 		},
 	}))
