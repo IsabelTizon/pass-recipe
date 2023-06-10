@@ -45,23 +45,36 @@ export default function SignUp() {
 			const email = credentials.get("email");
 			const password = credentials.get("password");
 
-			const { data, error } = await supabase.auth.signUp({
-				firstName,
-				lastName,
+			const { data: singupData, error } = await supabase.auth.signUp({
 				email,
 				password,
+				options: {
+					data: {
+						first_name: firstName,
+						last_name: lastName,
+					},
+				},
 			});
+
+			// const { data: insertData } = await supabase.from("users").insert({
+			// 	first_name: firstName,
+			// 	last_name: lastName,
+			// 	email,
+			// 	password,
+			// });
 
 			//Conditional
 			if (error) {
+				console.error("Error signing up:", error);
 				throw error;
 			}
-			console.log("User signed up successfully:", data.user);
+
+			console.log("User signed up successfully:", singupData);
 			// setUser(data.user);
 			// Verification email to the user email
-			navigate("/Success");
+			navigate("/pass-recipes/success");
 			await supabase.auth.api.sendVerificationEmail(email, {
-				redirectTo: `${window.location.origin}/login`,
+				redirectTo: `${window.location.origin}/pass-recipes/login`,
 			});
 		} catch (error) {
 			console.error("Error signing up:", error.message);

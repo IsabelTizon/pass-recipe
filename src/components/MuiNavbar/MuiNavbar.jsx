@@ -25,11 +25,13 @@ import {
 	ListItemText,
 	Toolbar,
 	Badge,
+	Typography,
 } from "@mui/material";
 
 //Links
 import { MuiNavbarItems } from "./MuiNavbarItems";
 import { appStore } from "../../store/appStore";
+import { authStore } from "../../store/authStore";
 
 //Logo
 // import styled from "styled-components";
@@ -93,6 +95,11 @@ export default function PersistentDrawerLeft() {
 	const theme = useTheme();
 	const [open, setOpen] = React.useState(false);
 	const totalItems = appStore((state) => state.myItems.length);
+	const user = authStore((state) => state.user);
+	console.log(
+		"🚀 ~ file: MuiNavbar.jsx:99 ~ PersistentDrawerLeft ~ user:",
+		user
+	);
 
 	// Drawer
 	const handleDrawerOpen = () => setOpen(true);
@@ -125,15 +132,19 @@ export default function PersistentDrawerLeft() {
 
 					{/*Login Button */}
 					<Box>
-						<Link to={"/pass-recipes/login"}>
-							<CommonButton
-								sx={buttonStyles}
-								variant="authentification"
-								size="small"
-							>
-								Log in
-							</CommonButton>
-						</Link>
+						{user.id ? (
+							<Typography>{user.firstName}</Typography>
+						) : (
+							<Link to={"/pass-recipes/login"}>
+								<CommonButton
+									sx={buttonStyles}
+									variant="authentification"
+									size="small"
+								>
+									Log in
+								</CommonButton>
+							</Link>
+						)}
 
 						{/* Cart */}
 						<Link to={"/pass-recipes/basket"} aria-label="link to basket">

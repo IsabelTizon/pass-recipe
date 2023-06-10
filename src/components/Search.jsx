@@ -7,7 +7,6 @@ import { devices } from "../Theme";
 export default function Search() {
 	const [input, setInput] = useState("");
 	const navigate = useNavigate();
-	console.log("devices", devices);
 
 	const submitHandler = (e) => {
 		e.preventDefault();

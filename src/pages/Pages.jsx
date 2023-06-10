@@ -18,7 +18,6 @@ import MyRecipes from "./MyRecipes";
 
 export default function Pages() {
 	const location = useLocation();
-	console.log("🚀 ~ file: Pages.jsx:21 ~ Pages ~ location:", location);
 
 	return (
 		<AnimatePresence mode="wait">
