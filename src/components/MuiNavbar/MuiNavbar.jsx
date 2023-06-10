@@ -131,9 +131,9 @@ export default function PersistentDrawerLeft() {
 					</Link>
 
 					{/*Login Button */}
-					<Box>
+					<Box sx={userLogged}>
 						{user.id ? (
-							<Typography>{user.firstName}</Typography>
+							<Typography sx={userName}>{user.firstName}</Typography>
 						) : (
 							<Link to={"/pass-recipes/login"}>
 								<CommonButton
@@ -261,4 +261,13 @@ const muiToolbarStyles = {
 	display: "flex",
 	flexDirection: "row",
 	justifyContent: "space-between",
+};
+
+const userName = {
+	color: "#505c26",
+	marginTop: "10px",
+};
+const userLogged = {
+	display: "flex",
+	flexDirection: "row",
 };
