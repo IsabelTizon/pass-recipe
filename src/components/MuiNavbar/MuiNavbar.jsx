@@ -265,7 +265,9 @@ const muiToolbarStyles = {
 
 const userName = {
 	color: "#505c26",
+	fontWeight: 600,
 	marginTop: "10px",
+	letterSpacing: "0.1em",
 };
 const userLogged = {
 	display: "flex",
