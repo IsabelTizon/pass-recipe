@@ -1,5 +1,7 @@
 import React from "react";
+// Meal file to return the fetch daily meal plan data
 import Meal from "../components/Meal";
+// Styled Component css and @query
 import styled from "styled-components";
 import { devices } from "../Theme";
 
@@ -10,8 +12,10 @@ export default function MealList({ mealData }) {
 	return (
 		<>
 			<Flex>
+				{/*  Title */}
 				<h1>Your Daily Plan</h1>
 			</Flex>
+			{/* Information */}
 			<Macros>
 				<List>
 					{/* toFixed: rounded number, no decimal */}
@@ -23,9 +27,11 @@ export default function MealList({ mealData }) {
 					<ListItem>Protein: {nutrients.protein.toFixed(0)}</ListItem>
 				</List>
 			</Macros>
+			{/* Cards daily meal */}
 			<Meals>
 				{/* for each meal return */}
 				{mealData.meals.map((meal) => {
+					// return meal component
 					return <Meal key={meal.id} meal={meal} />;
 				})}
 			</Meals>

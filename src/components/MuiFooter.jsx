@@ -1,9 +1,11 @@
 import React from "react";
+//MUI materials
 import { Paper, Box, Typography, Container } from "@mui/material";
 
 export default function MuiFooter() {
 	return (
 		<Paper
+			// Footer styles
 			sx={{
 				width: "100%",
 				height: "45px",
@@ -15,15 +17,8 @@ export default function MuiFooter() {
 			square
 			variant="outlined"
 		>
+			{/*  Container text styles */}
 			<Container maxWidth="lg">
-				<Box
-					sx={{
-						flexGrow: 1,
-						justifyContent: "center",
-						display: "flex",
-					}}
-				></Box>
-
 				<Box
 					sx={{
 						flexGrow: 1,
@@ -32,8 +27,9 @@ export default function MuiFooter() {
 						mt: "9px",
 					}}
 				>
+					{/*  Text */}
 					<Typography variant="caption" color="white" sx={{ fontSize: "1rem" }}>
-						Pass Recipe ©2023
+						Pass Recipe © 2023
 					</Typography>
 				</Box>
 			</Container>

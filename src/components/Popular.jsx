@@ -3,9 +3,9 @@ import { useEffect, useState } from "react";
 //Splide: the carousel
 //SplideSlide: It's gonna be each individual image or card
 import { Splide, SplideSlide } from "@splidejs/react-splide";
-import { Link } from "react-router-dom";
-//
 import "@splidejs/splide/dist/css/splide.min.css";
+// Router navigation links
+import { Link } from "react-router-dom";
 
 //@query
 import styled from "styled-components";
@@ -42,6 +42,9 @@ export default function Popular() {
 		}
 	};
 
+	console.log("hola");
+	console.log("popul", popular);
+
 	// return Popular
 	return (
 		<>
@@ -69,26 +72,29 @@ export default function Popular() {
 						},
 					}}
 				>
-					{popular.map((popular) => {
-						return (
-							//key={popular.id}:
-							<SplideSlide key={popular.id}>
-								{/*each card would be a slide*/}
-								<Card>
-									<Link to={"/pass-recipes/recipe/" + popular.id}>
-										{/*return imag*/}
-										<img src={popular.image} alt="popular.title" />
-										{/*return Recipe Title*/}
-										<Box>
-											{/*return title img */}
-											<p>{popular.title}</p>
-										</Box>
-										{/* <Gradient /> */}
-									</Link>
-								</Card>
-							</SplideSlide>
-						);
-					})}
+					{popular.length > 0
+						? popular.map((recipe) => {
+								console.log("popular ->", recipe.image);
+								return (
+									//key={recipe.id}:
+									<SplideSlide key={recipe.id}>
+										{/*each card would be a slide*/}
+										<Card>
+											<Link to={"/pass-recipes/recipe/" + recipe.id}>
+												{/*return imag*/}
+												<img src={recipe.image} alt="recipe.title" />
+												{/*return Recipe Title*/}
+												<Box>
+													{/*return title img */}
+													<p>{recipe.title}</p>
+												</Box>
+												{/* <Gradient /> */}
+											</Link>
+										</Card>
+									</SplideSlide>
+								);
+						  })
+						: null}
 				</Splide>
 			</Wrapper>
 		</>

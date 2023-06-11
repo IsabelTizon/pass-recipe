@@ -6,12 +6,12 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import PersonIcon from "@mui/icons-material/Person";
 import { SiCodechef } from "react-icons/si";
-// import MonitorWeightIcon from "@mui/icons-material/MonitorWeight";
-// import EmojiEventsIcon from "@mui/icons-material/EmojiEvents";
-
 import SettingsEthernetIcon from "@mui/icons-material/SettingsEthernet";
+
+//Divider
 import { Divider } from "@mui/material";
 
+// Array of objects with navbar navigation
 export const MuiNavbarItems = [
 	{
 		id: 0,
@@ -62,7 +62,6 @@ export const MuiNavbarItems = [
 		id: 7,
 		icon: <PersonIcon />,
 		label: "Register",
-		// label: {user ? user.email : "Register"},
 		route: "/pass-recipes/login",
 	},
 ];

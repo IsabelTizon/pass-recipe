@@ -1,4 +1,5 @@
 export const storeItems = [
+	//Array of objects with courses data
 	{
 		id: 0,
 		name: "Cooking",

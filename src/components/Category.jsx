@@ -1,11 +1,14 @@
+//Icons
 import { FaPizzaSlice, FaHamburger, FaPepperHot } from "react-icons/fa";
 import { GiNoodles, GiSushis, GiCheeseWedge } from "react-icons/gi";
-
+//Styled Component
 import styled from "styled-components";
-import { NavLink } from "react-router-dom"; // a= NavLink: react links
+//Router (links)
+import { NavLink } from "react-router-dom";
+//@query
 import { devices } from "../Theme";
 
-function Category() {
+export default function Category() {
 	return (
 		<List>
 			<SLink to={"/pass-recipes/cuisine/Italian"}>
@@ -83,6 +86,3 @@ const SLink = styled(NavLink)`
 		}
 	}
 `;
-
-//Export
-export default Category;
