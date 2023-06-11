@@ -22,11 +22,15 @@ export default function Popular() {
 	const getPopular = async () => {
 		// Storing our fetch in our localStorage for don't fetch over and over again and don't loose my maximun of request per day in spoonaculary API
 
-		const check = localStorage.getItem("popular") || false; // get in the item
+		const check =
+			// If the local storage is "undefined" return false
+			localStorage.getItem("popular") === "undefined"
+				? false
+				: // if not return the localStorage
+				  localStorage.getItem("popular"); // get in the item
 
 		if (check) {
 			// If there is an item in localStorage, set it and don't do the fetching again
-
 			setPopular(JSON.parse(check)); // JSON.parse: takes the argument of the JSON source and converts it to the JSON format, because the data was in string
 		} else {
 			const api = await fetch(
@@ -35,15 +39,12 @@ export default function Popular() {
 			);
 			const data = await api.json();
 
-			localStorage.setItem("popular", JSON.stringify(data.popular)); // Saving the array like a string
+			localStorage.setItem("popular", JSON.stringify(data.recipes)); // Saving the array like a string
 			// console.log(data);
-			setPopular(data.popular);
-			console.log(data.popular);
+			setPopular(data.recipes);
+			console.log(data.recipes);
 		}
 	};
-
-	console.log("hola");
-	console.log("popul", popular);
 
 	// return Popular
 	return (
@@ -72,29 +73,27 @@ export default function Popular() {
 						},
 					}}
 				>
-					{popular.length > 0
-						? popular.map((recipe) => {
-								console.log("popular ->", recipe.image);
-								return (
-									//key={recipe.id}:
-									<SplideSlide key={recipe.id}>
-										{/*each card would be a slide*/}
-										<Card>
-											<Link to={"/pass-recipes/recipe/" + recipe.id}>
-												{/*return imag*/}
-												<img src={recipe.image} alt="recipe.title" />
-												{/*return Recipe Title*/}
-												<Box>
-													{/*return title img */}
-													<p>{recipe.title}</p>
-												</Box>
-												{/* <Gradient /> */}
-											</Link>
-										</Card>
-									</SplideSlide>
-								);
-						  })
-						: null}
+					{popular.map((recipe) => {
+						console.log("popular ->", recipe.image);
+						return (
+							//key={recipe.id}:
+							<SplideSlide key={recipe.id}>
+								{/*each card would be a slide*/}
+								<Card>
+									<Link to={"/pass-recipes/recipe/" + recipe.id}>
+										{/*return imag*/}
+										<img src={recipe.image} alt="recipe.title" />
+										{/*return Recipe Title*/}
+										<Box>
+											{/*return title img */}
+											<p>{recipe.title}</p>
+										</Box>
+										{/* <Gradient /> */}
+									</Link>
+								</Card>
+							</SplideSlide>
+						);
+					})}
 				</Splide>
 			</Wrapper>
 		</>

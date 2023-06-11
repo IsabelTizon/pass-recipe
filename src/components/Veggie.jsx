@@ -20,7 +20,12 @@ export default function Veggie() {
 
 	const getVeggie = async () => {
 		// Storing our fetch in our localStorage for don't fetch over and over again and don't loose my maximun of request per day in spoonaculary API
-		const check = localStorage.getItem("veggie") || false; // get in the item
+		const check =
+			// If the local storage is "undefined" return false
+			localStorage.getItem("veggie") === "undefined"
+				? false
+				: // if not return the localStorage
+				  localStorage.getItem("veggie"); // get in the item
 
 		if (check) {
 			// If there is an item in localStorage, set it and don't do the fetching again
@@ -31,7 +36,6 @@ export default function Veggie() {
 				`https://api.spoonacular.com/recipes/random?apiKey=${process.env.REACT_APP_API_KEY}&number=9&tags=vegetarian`
 			);
 			const data = await api.json();
-			console.log("🚀 ~ file: Veggie.jsx:31 ~ getVeggie ~ data:", data);
 
 			localStorage.setItem("veggie", JSON.stringify(data.recipes)); // Saving the array like a string
 			// console.log(data);
