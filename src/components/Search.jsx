@@ -1,13 +1,26 @@
+//Styles and @query
 import styled from "styled-components";
-import { useState } from "react";
-import { FaSearch } from "react-icons/fa";
-import { useNavigate } from "react-router-dom";
 import { devices } from "../Theme";
 
+// Hook
+import { useState } from "react";
+//Search icon
+import { FaSearch } from "react-icons/fa";
+
+// Navigation
+import { useNavigate } from "react-router-dom";
+
 export default function Search() {
+	//useState() is React Hook that allows you to add state to a functional component.
+	//It returns an array with two values: the current state and a function to update it.The Hook takes an initial state value as an argument and returns an updated state value whenever the setter function is called.
+	//useState() components to store dynamic values depending of the search
+	//useState() the component changes depending on the state2
 	const [input, setInput] = useState("");
 	const navigate = useNavigate();
 
+	//The submitHandler event occurs when a form is submitted.
+	//The submit() method triggers the submit event
+	//when you submit the search navigate to the searched input
 	const submitHandler = (e) => {
 		e.preventDefault();
 		navigate("/pass-recipes/searched/" + input);
@@ -16,8 +29,10 @@ export default function Search() {
 		<>
 			<FormStyle onSubmit={submitHandler}>
 				<div>
+					{/* seacrh icon */}
 					<FaSearch></FaSearch>
 					<input
+						//The onchange event occurs when the value of an HTML element is changed. In this case the user change the value of the input search
 						onChange={(e) => setInput(e.target.value)}
 						type="text"
 						value={input}

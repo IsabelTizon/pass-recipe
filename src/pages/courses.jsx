@@ -34,6 +34,7 @@ export default function Courses() {
 					<Typography sx={title}>Pass Recipe Courses</Typography>
 				</Box>
 				<Box sx={wrapCourses}>
+					{/* map() method to create a new array with the elements of the soreItems array */}
 					{storeItems.map((item) => (
 						<CardCourse key={item.id} sx={{ maxWidth: 345, mb: 5 }}>
 							<CardHeader
@@ -73,6 +74,7 @@ export default function Courses() {
 							</CardContent>
 							{/* Button to add course to the basket */}
 							<Box sx={shoppingBtnContainer}>
+								{/*  when click the button (event handler function onclick) add a product (arrow function) on the aapStore */}
 								<CommonButton
 									onClick={() => addProduct(item)}
 									sx={addingCartBtn}

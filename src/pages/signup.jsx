@@ -31,12 +31,16 @@ const defaultTheme = createTheme({
 });
 
 export default function SignUp() {
+	//Hook to navigate
 	const navigate = useNavigate();
-	// const [user, setUser] = useState(null);
 
+	//The submitHandler event occurs when a form is submitted.
+	//The submit() method triggers the submit event
+	//when you submit the credentials (first name, last name, email, password)
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		try {
+			//Form
 			//Asigning variables
 			const credentials = new FormData(e.currentTarget);
 
@@ -49,19 +53,13 @@ export default function SignUp() {
 				email,
 				password,
 				options: {
+					// it is important to writte the word options because if not the data is not store in supabase
 					data: {
 						first_name: firstName,
 						last_name: lastName,
 					},
 				},
 			});
-
-			// const { data: insertData } = await supabase.from("users").insert({
-			// 	first_name: firstName,
-			// 	last_name: lastName,
-			// 	email,
-			// 	password,
-			// });
 
 			//Conditional
 			if (error) {
@@ -70,11 +68,11 @@ export default function SignUp() {
 			}
 
 			console.log("User signed up successfully:", singupData);
-			// setUser(data.user);
+
 			// Verification email to the user email
 			navigate("/pass-recipes/success");
 			await supabase.auth.api.sendVerificationEmail(email, {
-				redirectTo: `${window.location.origin}/pass-recipes/login`,
+				redirectTo: `${window.location.origin}/pass-recipes/login`, //this doesn't works, I wanted to redirect to the login page after the user confirms the email
 			});
 		} catch (error) {
 			console.error("Error signing up:", error.message);
@@ -99,6 +97,7 @@ export default function SignUp() {
 					<Typography component="h1" variant="h5">
 						Sign up
 					</Typography>
+					{/* Form with first name, last name, email and passwork as required inputs */}
 					<Box
 						component="form"
 						noValidate
@@ -160,10 +159,8 @@ export default function SignUp() {
 						</CommonButton>
 						<Grid container justifyContent="flex-end">
 							<Grid item>
-								{/* {user ? (
-									<Typography>Check your email for the confirmation</Typography>
-								) : null} */}
 								<Link
+									//when click the link (event handler function onclick) navigate to the login page
 									onClick={() => navigate("/pass-recipes/login")}
 									aria-label="Link to sign in"
 									variant="body2"

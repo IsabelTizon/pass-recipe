@@ -16,7 +16,7 @@ export default function Veggie() {
 	useEffect(() => {
 		//array function to invoke the function with empty array
 		getVeggie();
-	}, []);
+	}, []); // Very important add , [] to the end of the arrow f() because because if you don't do that you create an infinite loop and you're left with no more API requests
 
 	const getVeggie = async () => {
 		// Storing our fetch in our localStorage for don't fetch over and over again and don't loose my maximun of request per day in spoonaculary API

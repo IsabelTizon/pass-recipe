@@ -1,8 +1,11 @@
 import React from "react";
+// Hook
 import { useState } from "react";
+//MUI Component
 import CommonButton from "../components/common/button";
-
+//Page
 import MealList from "../components/MealList";
+//Image
 import hero from "../img/meal-plan.jpg";
 
 //Styles & @query
@@ -10,12 +13,17 @@ import styled from "styled-components";
 import { devices } from "../Theme";
 
 export default function MealPlanning() {
+	//useState() is React Hook that allows you to add state to a functional component.
+	//It returns an array with two values: the current state and a function to update it.The Hook takes an initial state value as an argument and returns an updated state value whenever the setter function is called.
+	//useState() components to store dynamic values like meal data and its calories
+	//useState() the component changes depending on the state2
 	const [mealData, setMealData] = useState(null);
 	const [calories, setCalories] = useState(2000);
 
 	const getMealData = async () => {
 		const api = await fetch(
-			`https://api.spoonacular.com/mealplanner/generate?apiKey=${process.env.REACT_APP_API_KEY}&timeFrame=day&targetCalories=${calories}`
+			// 'await' expressions are only allowed within async functions to wait to process the code before pop in in the next line
+			`https://api.spoonacular.com/mealplanner/generate?apiKey=${process.env.REACT_APP_API_KEY}&timeFrame=day&targetCalories=${calories}` //fetching the daily recipes per calories with the Spoonacular API
 		);
 
 		const data = await api.json();
@@ -26,6 +34,7 @@ export default function MealPlanning() {
 	return (
 		<>
 			<Hero>
+				{/* Hero image */}
 				<img className="hero" src={hero} alt="hero meal plan" />
 				{/* React Fragment */}
 				<Plan>
@@ -35,6 +44,7 @@ export default function MealPlanning() {
 					</h4>
 					<form>
 						<input
+							//The onchange event occurs when the value of an HTML element is changed. In this case the user change the calories in the input search
 							onChange={(e) => setCalories(e.target.value)}
 							type="number"
 							placeholder="Calories e.g. 2000"
@@ -43,7 +53,7 @@ export default function MealPlanning() {
 							aria-label="Get meal"
 							sx={buttonStyles}
 							size="small"
-							onClick={getMealData}
+							onClick={getMealData} //The onclick event occurs when the user clicks on the button to get the daily meal. It allows to execute the function getMealData.
 						>
 							Get
 						</CommonButton>

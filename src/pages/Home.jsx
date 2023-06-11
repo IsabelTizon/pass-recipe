@@ -1,16 +1,21 @@
 import React from "react";
+//Components
 import Veggie from "../components/Veggie";
 import Popular from "../components/Popular";
 import Category from "../components/Category";
 import Search from "../components/Search";
 
+// Framer Motion: React and JavaScript animation library
 import { motion } from "framer-motion";
+
+//Styles & @query
 import styled from "styled-components";
 import { devices } from "../Theme";
 
 export default function Home() {
 	return (
 		<>
+			{/* Animation for the transition to render the components */}
 			<motion.div
 				animate={{ opacity: 1 }}
 				initial={{ opacity: 0 }}
@@ -18,10 +23,10 @@ export default function Home() {
 				transition={{ duration: 0.5 }}
 			>
 				<MainHome>
-					<Search />
-					<Category />
-					<Veggie />
-					<Popular />
+					<Search /> {/* Search component */}
+					<Category /> {/* Category component */}
+					<Veggie /> {/* Veggie component */}
+					<Popular /> {/* Popular component */}
 				</MainHome>
 			</motion.div>
 		</>

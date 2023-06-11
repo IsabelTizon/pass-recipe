@@ -18,7 +18,7 @@ import MyRecipes from "./MyRecipes";
 
 export default function Pages() {
 	const location = useLocation();
-
+	//navigate to the different pages
 	return (
 		<AnimatePresence mode="wait">
 			<Routes Location={location} key={location.pathname}>

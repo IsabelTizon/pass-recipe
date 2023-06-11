@@ -1,4 +1,5 @@
 import * as React from "react";
+//Router to navigate
 import { useNavigate } from "react-router-dom";
 
 // Supabase
@@ -37,21 +38,26 @@ const defaultTheme = createTheme({
 });
 
 export default function SignIn() {
-	// console.log("my supabase", supabase);
-	const navigate = useNavigate();
-	const loginUser = authStore((state) => state.loginUser);
+	const navigate = useNavigate(); // Hook to navigate when you clinck
+	const loginUser = authStore((state) => state.loginUser); //Zustand Global managment statements
 
 	// Btn signin
+	//The submitHandler event occurs when a form is submitted.
+	//The submit() method triggers the submit event
+	//when you submit your credentials (email and password) navigate to home
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 
 		try {
+			//Form
 			const credentials = new FormData(e.currentTarget);
-
+			//Input email
 			const email = credentials.get("email");
+			//input password
 			const password = credentials.get("password");
 
-			const { data, error } = await supabase.auth.signInWithPassword({
+			const { data, error } = await // Supabase database
+			supabase.auth.signInWithPassword({
 				email,
 				password,
 			});
@@ -63,7 +69,7 @@ export default function SignIn() {
 
 			console.log("data", data);
 
-			//Calling authStore f()
+			//Calling authStore f() to see if the credential data is store in supabase
 			loginUser(data);
 			console.log("User sigin successfully:", data.user);
 
@@ -92,6 +98,7 @@ export default function SignIn() {
 					<Typography component="h1" variant="h5">
 						Sign in
 					</Typography>
+					{/* Form with email and passwork as required inputs */}
 					<Box
 						component="form"
 						onSubmit={handleSubmit}
@@ -118,10 +125,6 @@ export default function SignIn() {
 							id="password"
 							autoComplete="current-password"
 						/>
-						{/* <FormControlLabel
-							control={<Checkbox value="remember" color="success" />}
-							label="Remember me"
-						/> */}
 						<CommonButton
 							type="submit"
 							fullWidth
@@ -131,18 +134,14 @@ export default function SignIn() {
 							Sign In
 						</CommonButton>
 						<Grid container>
-							{/* <Grid item xs>
-								<Link href="#" variant="body2" sx={links}>
-									Forgot password?
-								</Link>
-							</Grid> */}
 							<Grid item>
 								<Link
+									//when click the link (event handler function onclick) navigate to the sign up page
 									onClick={() => navigate("/pass-recipes/signup")}
 									variant="body2"
 									sx={links}
 								>
-									{"Don't have an account? Sign Up"}
+									{"Don't have an account? Sign Up"}{" "}
 								</Link>
 							</Grid>
 						</Grid>

@@ -1,29 +1,38 @@
 import React from "react";
+//Hooks
 import { useEffect, useState } from "react";
-import styled from "styled-components";
 import { useParams } from "react-router-dom";
+
+//MUI Materials
 import { Button, Box } from "@mui/material";
-// import useMediaQuery from "@mui/material/useMediaQuery";
+
+//Styles and @query
+import styled from "styled-components";
 import { devices } from "../Theme";
 
 export default function Recipe() {
 	let params = useParams();
-	// const matches = useMediaQuery("(min-width:360px)");
-
+	//useState() is React Hook that allows you to add state to a functional component.
+	//It returns an array with two values: the current state and a function to update it.The Hook takes an initial state value as an argument and returns an updated state value whenever the setter function is called.
+	//useState() components to store dynamic values like the details of the recipe or to active the elaboration or ingredients tab
 	const [details, setDetails] = useState([]);
 	const [activeTab, setActiveTab] = useState("Recipe"); //Active Buttons
+	//set elaboration button by default when the page is render
 
 	const fetchDetails = async () => {
 		const data = await fetch(
-			`https://api.spoonacular.com/recipes/${params.name}/information?apiKey=${process.env.REACT_APP_API_KEY}`
+			// 'await' expressions are only allowed within async functions to wait to process the code before pop in in the next line
+			`https://api.spoonacular.com/recipes/${params.name}/information?apiKey=${process.env.REACT_APP_API_KEY}` //fetching the description of the recipe with the Spoonacular API
 		);
 		const detailData = await data.json();
 		setDetails(detailData);
 	};
 
+	//The useEffect Hook allows you to perform side effects in your components like fetching the recipe details
+	// the useEffect  always have two parameters: 1 f() and one array of dependencies, this last one can be empty
 	useEffect(() => {
-		fetchDetails();
-	}, [params.name]); // function with useCallback to fix it
+		fetchDetails(); //f()
+	}, [params.name]); // dependency array,
 
 	return (
 		<DetailWrapper>
@@ -31,6 +40,7 @@ export default function Recipe() {
 				<h2>{details.title}</h2>
 			</Box>
 			<Box sx={boxStyles}>
+				{/* Recipe Image */}
 				<img
 					style={{
 						minWidth: 300,
@@ -42,23 +52,22 @@ export default function Recipe() {
 					<BoxBtns>
 						<Button
 							sx={buttonStyles}
-							// variant="authentification"
 							size="small"
 							className={activeTab === "Recipe" ? "active" : ""}
-							onClick={() => setActiveTab("Recipe")}
+							onClick={() => setActiveTab("Recipe")} //when click the button (event handler function onclick) activate the tab elaboration and show the elaboration description of the recipe
 						>
 							Recipe
 						</Button>
 						<Button
 							sx={buttonStyles}
-							// variant="authentification"
 							size="medium"
 							className={activeTab === "Ingredients" ? "active" : ""}
-							onClick={() => setActiveTab("Ingredients")}
+							onClick={() => setActiveTab("Ingredients")} //when click the button (event handler function onclick) activate the tab ingredients and show the ingredients of the recipe
 						>
 							Ingredients
 						</Button>
 					</BoxBtns>
+					{/* Elaboration tab */}
 					{activeTab === "Recipe" ? (
 						<div>
 							<h4 dangerouslySetInnerHTML={{ __html: details.summary }}></h4>
@@ -66,6 +75,7 @@ export default function Recipe() {
 						</div>
 					) : null}
 
+					{/* Ingredients tab */}
 					{activeTab === "Ingredients" ? (
 						<ul>
 							{details.extendedIngredients.map((ingredient) => (

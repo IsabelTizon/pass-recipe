@@ -9,21 +9,30 @@ import Search from "../components/Search";
 import styled from "styled-components";
 import { devices } from "../Theme";
 
-function Searched() {
+export default function Searched() {
 	const [searchedRecipes, setSearchedRecipes] = useState([]);
+	//The useParams hook returns an object of key/value pairs of the dynamic params from the current URL that were matched by the <Route path>.
 	let params = useParams();
 
 	const getSearched = async (name) => {
-		const check = localStorage.getItem("searchedRecipes") || false;
+		const check =
+			// I was having problems to render the images because the local storage veggie value was the string of undefine. I created a condition to make false the undefine value and that the condition could be met the getItem veggie.
+			localStorage.getItem("searchedRecipes") === "undefined" // If the local storage is "undefined" return false
+				? false
+				: // if not return the localStorage
+				  localStorage.getItem("searchedRecipes"); // get in the
 
 		if (check) {
+			// If there is an item in localStorage, set it and don't do the fetching
 			setSearchedRecipes(JSON.parse(check));
 		} else {
+			//fetching the Spoonacular API to see the input searched
 			const data = await fetch(
 				`https://api.spoonacular.com/recipes/complexSearch?apiKey=${process.env.REACT_APP_API_KEY}&query=${name}`
 			);
 
 			const recipes = await data.json();
+			// 'await' expressions are only allowed within async functions to wait to process the code before pop in in the next line
 
 			localStorage.setItem("searched", JSON.stringify(recipes.results));
 
@@ -31,17 +40,24 @@ function Searched() {
 		}
 	};
 
+	//The useEffect Hook allows you to perform side effects in your components like fetching data
+	// the useEffect  always have two parameters: 1 f() and one array of dependencies, this last one can be empty
 	useEffect(() => {
-		getSearched(params.search);
-	}, [params.search]);
+		getSearched(params.search); //f()
+	}, [params.search]); // dependency array
 
 	return (
 		<>
+			{/* Search component */}
 			<Search />
+			{/* Category component */}
 			<Category />
+			{/* section of recipes cards searched */}
 			<Grid>
+				{/* map() method to create a new array with the searched recipes array */}
 				{searchedRecipes.map((item) => {
 					return (
+						//Card with image and title recipe
 						<Card key={item.id}>
 							<Link to={"/pass-recipes/recipe/" + item.id}>
 								<img src={item.image} alt="" />
@@ -85,5 +101,3 @@ const Card = styled.div`
 		padding: 1rem;
 	}
 `;
-
-export default Searched;
