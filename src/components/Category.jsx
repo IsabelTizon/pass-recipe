@@ -10,28 +10,41 @@ import { devices } from "../Theme";
 
 export default function Category() {
 	return (
+		// List of links with categories world food
 		<List>
+			{/* link to italian categorie food */}
 			<SLink to={"/pass-recipes/cuisine/Italian"}>
+				{/* icon */}
 				<FaPizzaSlice />
 				<h5>Italian</h5>
 			</SLink>
+			{/* link to amerian category food */}
 			<SLink to={"/pass-recipes/cuisine/American"}>
+				{/* icon */}
 				<FaHamburger />
 				<h5>American</h5>
 			</SLink>
+			{/* link to Thai category food */}
 			<SLink to={"/pass-recipes/cuisine/Thai"}>
+				{/* icon */}
 				<GiNoodles />
 				<h5>Thai</h5>
 			</SLink>
+			{/* link to Japanese category food */}
 			<SLink to={"/pass-recipes/cuisine/Japanese"}>
+				{/* icon */}
 				<GiSushis />
 				<h5>Japanese</h5>
 			</SLink>
+			{/* link to french category food */}
 			<SLink to={"/pass-recipes/cuisine/French"}>
+				{/* icon */}
 				<GiCheeseWedge />
 				<h5>Frenc</h5>
 			</SLink>
+			{/* link to mexican category food */}
 			<SLink to={"/pass-recipes/cuisine/Mexican"}>
+				{/* icon */}
 				<FaPepperHot />
 				<h5>Mexican</h5>
 			</SLink>
@@ -61,6 +74,7 @@ const SLink = styled(NavLink)`
 	width: 4.5rem;
 	height: 4.5rem;
 	transform: scale(0.8);
+
 	//Tablet
 	@media ${devices.tablet} {
 		margin-right: 2rem;

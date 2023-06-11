@@ -1,5 +1,3 @@
-// import React, { useState } from "react";
-
 //Mui Materials
 import {
 	CardHeader,
@@ -10,18 +8,9 @@ import {
 	Box,
 	Button as CommonButton,
 } from "@mui/material";
-// import { styled } from "@mui/material/styles";
-// import CardActions from "@mui/material/CardActions";
-// import Collapse from "@mui/material/Collapse";
-// import IconButton from "@mui/material/IconButton";
 
 // Mui Colors
 import { green } from "@mui/material/colors";
-// Mui Icons
-// import FavoriteIcon from "@mui/icons-material/Favorite";
-// import ShareIcon from "@mui/icons-material/Share";
-// import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-// import MoreVertIcon from "@mui/icons-material/MoreVert";
 
 //Links
 import { storeItems } from "../components/courses/storeItems";
@@ -35,6 +24,7 @@ import Logo from "../img/Logo.png";
 import { styled } from "@mui/material/styles";
 
 export default function Courses() {
+	//Constant to set the course that the user cliked in the basket
 	const addProduct = appStore((state) => state.addProduct);
 
 	return (
@@ -47,38 +37,41 @@ export default function Courses() {
 					{storeItems.map((item) => (
 						<CardCourse key={item.id} sx={{ maxWidth: 345, mb: 5 }}>
 							<CardHeader
+								// Avatar image of the web
 								avatar={
 									<Avatar sx={{ bgcolor: green[800] }} aria-label="course">
 										<img src={Logo} width="40" height="30" alt="logo"></img>
 									</Avatar>
 								}
-								// action={
-								// 	<IconButton aria-label="settings">
-								// 		<MoreVertIcon />
-								// 	</IconButton>
-								// }
-
+								//Title of the course
 								title={<Typography sx={titleCart}>{item.name}</Typography>}
+								//Subtitle
 								subheader={
 									<Box sx={subheaderCart}>
 										<Typography>Beginners</Typography>
-										<Typography>{formatCurrency(item.price)}</Typography>
+										<Typography>
+											{/* formatCurrency() to add commas and decimals in the correct positions and to put each price output based on the currency with
+										proper formatting. */}
+											{formatCurrency(item.price)}
+										</Typography>
 									</Box>
 								}
 							/>
+							{/* Image */}
+							{/* the source need to have process.env.PUBLIC_URL to can access the public files because in the production I couldn't see then without process.env.PUBLIC_URL */}
 							<CardMedia
 								component="img"
 								height="194"
 								image={process.env.PUBLIC_URL + item.imgUrl}
 								alt="courseImage"
 							/>
-
+							{/* Description of the course */}
 							<CardContent>
 								<Typography variant="body2" color="text.secondary">
 									{item.cardContent}
 								</Typography>
 							</CardContent>
-
+							{/* Button to add course to the basket */}
 							<Box sx={shoppingBtnContainer}>
 								<CommonButton
 									onClick={() => addProduct(item)}

@@ -21,20 +21,20 @@ export default function Veggie() {
 	const getVeggie = async () => {
 		// Storing our fetch in our localStorage for don't fetch over and over again and don't loose my maximun of request per day in spoonaculary API
 		const check =
-			// If the local storage is "undefined" return false
-			localStorage.getItem("veggie") === "undefined"
+			// I was having problems to render the images because the local storage veggie value was the string of undefine. I created a condition to make false the undefine value and that the condition could be met the getItem veggie.
+			localStorage.getItem("veggie") === "undefined" // If the local storage is "undefined" return false
 				? false
 				: // if not return the localStorage
 				  localStorage.getItem("veggie"); // get in the item
 
 		if (check) {
-			// If there is an item in localStorage, set it and don't do the fetching again
+			// If there is an item in localStorage, set it and don't do the fetching
 			setVeggie(JSON.parse(check)); // JSON.parse: takes the argument of the JSON source and converts it to the JSON format, because the data was in string
 		} else {
 			const api = await fetch(
 				// 'await' expressions are only allowed within async functions to wait to process the code before pop in in the next line
 				`https://api.spoonacular.com/recipes/random?apiKey=${process.env.REACT_APP_API_KEY}&number=9&tags=vegetarian`
-			);
+			); //fetch 9 vegetarian recipes
 			const data = await api.json();
 
 			localStorage.setItem("veggie", JSON.stringify(data.recipes)); // Saving the array like a string

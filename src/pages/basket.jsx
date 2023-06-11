@@ -18,9 +18,10 @@ import { devices } from "../Theme";
 import { styled as styles } from "@mui/material/styles";
 
 export default function Basket() {
+	//Global components with Zustand
 	const myItems = appStore((state) => state.myItems);
 	const deleteBtn = appStore((state) => state.deleteBtn);
-
+	//If my array have items go through and create a card with each object
 	if (myItems.length !== 0) {
 		return (
 			<ContainerBasket>
@@ -29,6 +30,7 @@ export default function Basket() {
 						<CardCourse key={item.id}>
 							<BoxLeft>
 								<ImageCourse>
+									{/* the source need to have process.env.PUBLIC_URL to can access the public files because in the production I couldn't see then without process.env.PUBLIC_URL */}
 									<img
 										src={process.env.PUBLIC_URL + item.imgUrl}
 										alt={item.name}
@@ -38,12 +40,15 @@ export default function Basket() {
 							<BoxRight>
 								<Box>
 									<TitleCard>
+										{/* formatCurrency() to add commas and decimals in the correct positions and to put each price output based on the currency with
+										proper formatting. */}
 										{item.name}: {formatCurrency(item.price)}
 									</TitleCard>
 								</Box>
 
 								<BoxBottom>
 									<ContainerBtns>
+										{/* decrease and increase buttons under construction */}
 										{/* DECREASE */}
 										<CommomButton
 											sx={btnQuantity}
@@ -63,6 +68,7 @@ export default function Basket() {
 									{/* DELEATE */}
 									<ContainerDelete>
 										<Typography>{formatCurrency(item.price)}</Typography>
+										{/* delete icon to delete item throught event handler function onclick to make the arrow function deleteBtn taking the global item from the array myItems store in store/appStore */}
 										<Box sx={deleteStyles} onClick={() => deleteBtn(item)}>
 											<DeleteOutlinedIcon fontSize="large" color="#505c26" />
 										</Box>
@@ -75,9 +81,11 @@ export default function Basket() {
 			</ContainerBasket>
 		);
 	} else {
+		//If there is not item in the basket show the next message
 		return (
 			<Box sx={containerCartEmpty}>
 				<Typography sx={headerEmptyBasket}>Your basket is empty</Typography>
+				{/* Button to go to Courses page */}
 				<Link to="/pass-recipes/courses">
 					<CommomButton sx={buttonStyles}>Go to Courses</CommomButton>
 				</Link>
